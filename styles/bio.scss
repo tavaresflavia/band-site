@@ -1,0 +1,356 @@
+@use "./partials/typography";
+@use "./partials/variables" as *;
+@use "./partials/mixins" as *;
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  font-family: Avenir;
+  margin: 0;
+  padding: 0;
+}
+
+.header{
+  background-color: $primary-dark-font-color;
+}
+
+.nav {
+  @include flex-wrapped(column);
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  @include desktop-fixed-width;
+
+  &__logo-link {
+    @include flex-wrapped(row,center);
+    padding-top: $mobile-margin;
+
+    @include tablet {
+      padding: $tablet-desktop-margin $tablet-margin-edge $tablet-desktop-margin;
+    }
+  }
+
+  &__link-bar {
+    @include flex-wrapped(row,space-around);
+    list-style: none;
+
+    font-size: 0.625rem;
+
+    @include tablet {
+      font-size: 0.75rem;
+    }
+  }
+  &__link-box {
+    width: 50%;
+    text-align: center;
+    padding: $mobile-margin 0;
+    
+    @include tablet {
+      width:auto;
+      padding: 2.25rem 0; // space to show hoover border effect
+      margin:0 2.25rem; // keep links separated without affecting hoover efect
+    }
+    &:hover {
+      border-bottom: 2px solid $primary-light-font-color;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $inactive-font-color;
+    &:active {
+      color: $primary-light-font-color;
+      font-weight: 700;
+    }
+  }
+}
+
+.hero {
+  background: url(../assets/images/hero-bio.jpg) center center / cover;
+  height: 30vh;
+
+  @include flex-wrapped;
+  align-items: center;
+  @include tablet {
+    height: 60vh;
+  }
+
+  @include desktop {
+    height: 90vh;
+  }
+
+  &::before {
+    content: "";
+    background-color: rgba(50, 50, 50, 0.5);
+    height: 30vh;
+    width: 100%;
+    @include tablet {
+      height: 60vh;
+    }
+    @include desktop {
+      height: 90vh;
+    }
+  }
+
+  &__title-box {
+    position: absolute;
+    z-index: 10;
+    @include desktop{
+      left: calc((100% - $fixed-width)/2);
+    }
+  }
+
+
+  &__title{
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: $primary-light-font-color;
+    margin-left: $mobile-margin;
+    @include tablet {
+      font-size: 3.75rem;
+      margin-left: $tablet-margin-edge;
+    }
+
+  }
+}
+
+.about-section {
+  color: $primary-dark-font-color;
+  @include section-padding;
+  width: 100%;
+  text-align: left;
+  @include desktop-fixed-width;
+  
+
+  &__content{
+    @include tablet {
+      margin:0 3.75rem;
+    }
+
+  }
+
+  &__img {
+    display: block;
+    max-width: 100%;
+    margin-bottom:$mobile-margin;
+    @include tablet {
+      margin-bottom:$tablet-desktop-margin;
+      
+    }
+    // transform: scaleY(0.9);
+  }
+
+  &__title {
+    @include mobile-section-header-font;
+    @include tablet {
+      @include tablet-section-header-font;
+    }
+  }
+
+  &__quote,
+  &__quote-author{
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 700;
+  }
+
+  &__quote,
+  &__text-title {
+    @include tablet {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+  }
+
+  &__text-title {
+    color: #000000;
+    font-weight: 600;
+    padding: 1.5rem 0 1rem;
+    @include tablet{
+    padding: 3rem 0 2.25rem;
+    }
+  }
+
+  &__text {
+    @include mobile-body-font;
+
+    @include tablet {
+      @include tablet-body-font;
+      display: flex;
+    }
+  }
+  
+
+  &__paragraph-1{
+    margin-bottom: $mobile-margin;
+    @include tablet {
+      margin-bottom: $tablet-desktop-margin;
+    }
+  }
+
+  &__paragraph-2{
+    @extend .about-section__paragraph-1;
+    @include tablet{
+      margin-left: $tablet-desktop-margin;
+    }
+    
+  }
+  
+}
+
+
+
+.gallery-section {
+  background-color: #fafafa;
+  @include section-padding;
+
+  &__box{
+    
+  @include desktop-fixed-width;
+  }
+ 
+  &__title {
+    color: $primary-dark-font-color;
+    
+    @include mobile-section-header-font;
+    @include tablet {
+      @include tablet-section-header-font;
+      
+    }
+  }
+}
+
+.gallery {
+  max-width: 100%;
+
+  @include tablet {
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  &__row{
+    @include tablet {
+      display: flex;
+      max-width: 100%;
+      flex-direction: row;
+      margin-bottom: $tablet-desktop-margin;
+      flex-shrink: 1;
+    }
+  }
+
+  &__row--bottom{
+    @include tablet {
+    margin-bottom: $tablet-margin-edge;
+    }
+
+  }
+
+  &__img-box {
+    max-width: 100%;
+    padding-bottom: $mobile-margin;
+
+    @include tablet {
+      padding: 0;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(1);
+
+    &:hover{
+      filter: grayscale(0);
+
+    }
+  }
+  &__img-box--middle {
+    @include tablet {
+      margin: 0px $tablet-desktop-margin;
+    }
+  }
+}
+
+.footer {
+  color: $primary-light-font-color;
+  @include section-padding;
+  background-color: $primary-dark-font-color;
+  
+
+  &__box{
+    position: relative;
+    @include desktop-fixed-width;
+  }
+
+
+  &__title {
+    @include mobile-section-header-font;
+    @include tablet {
+      @include tablet-section-header-font;
+      display: inline-block;
+    }
+  }
+
+  &__social-bar {
+    width: 8rem;
+    @include flex-wrapped;
+    justify-content: space-between;
+    @include tablet {
+      display: inline-flex;
+      margin-left: $tablet-desktop-margin;
+    }
+  }
+
+  &__contact-box {
+    @include tablet {
+      @include flex-wrapped;
+      width: 100%;
+      justify-content: space-between;
+    }
+    @include desktop{
+      max-width: 75%;
+    }
+  }
+
+  &__item{
+    margin-bottom: $mobile-margin;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 400;
+  }
+
+  &__copyright {
+    @extend .footer__item;
+    margin:0;
+    padding: $mobile-margin  0;
+  }
+  &__email-link{
+    text-decoration: none;
+    color:$primary-light-font-color;
+  }
+
+  &__item--bold {
+    font-weight: 600;
+  }
+
+  &__logo {
+    margin-top: 2.25rem;
+    max-height: 1.25rem;
+    max-width: 7.5rem;
+    @include tablet {
+      margin: 0;
+      display: inline;
+      position: absolute;
+      left: calc(
+        100% - 7.5rem
+      ); // top margin for heading in tablet plus half of logo height
+      top: calc(
+        3rem + 0.625rem
+      ); // top margin for heading in tablet plus half of logo height
+    }
+  }
+}
