@@ -1,6 +1,6 @@
 @use './variables' as *;
 
-@mixin flex-wrapped ($flex-direction:row,$jufity-content:flex-start,$align-items:normal){
+@mixin flex-wrapped ($flex-direction:row,$jufity-content:flex-start){
     display: flex;
     flex-wrap: wrap;
     flex-direction: $flex-direction;
@@ -46,6 +46,7 @@
     font-weight: 400;
   }
 
+  // Mixin to change the lateral padding of main sections: about, gallery and footer
   @mixin section-padding{
     padding:0 $mobile-margin;
     @include tablet{
@@ -54,6 +55,7 @@
    
   }
 
+  // Mixin to change the keep content width fixed and centralized (margin:auto)
   @mixin desktop-fixed-width{
     @include desktop{
       max-width: $fixed-width;

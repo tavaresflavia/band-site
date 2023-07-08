@@ -23,6 +23,7 @@
   font-family: Avenir;
   margin: 0;
   padding: 0;
+  border: 1px solid red;
 }
 
 .header {
@@ -65,6 +66,7 @@
   justify-content: space-around;
   list-style: none;
   font-size: 0.625rem;
+  line-height: 1.25rem;
 }
 @media (min-width: 768px) {
   .nav__link-bar {
@@ -89,6 +91,7 @@
 .nav__link {
   text-decoration: none;
   color: #E1E1E1;
+  line-height: 1.25rem;
 }
 .nav__link:active {
   color: #FFFFFF;
@@ -97,12 +100,12 @@
 
 .hero {
   background: url(../assets/images/hero-bio.jpg) center center/cover;
-  height: 30vh;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  height: 30vh;
 }
 @media (min-width: 768px) {
   .hero {
@@ -116,19 +119,9 @@
 }
 .hero::before {
   content: "";
-  background-color: rgba(50, 50, 50, 0.5);
-  height: 30vh;
   width: 100%;
-}
-@media (min-width: 768px) {
-  .hero::before {
-    height: 60vh;
-  }
-}
-@media (min-width: 1280px) {
-  .hero::before {
-    height: 90vh;
-  }
+  background-color: rgba(50, 50, 50, 0.5);
+  height: 100%;
 }
 .hero__title-box {
   position: absolute;
@@ -141,8 +134,8 @@
 }
 .hero__title {
   font-weight: 600;
-  font-size: 1.5rem;
   color: #FFFFFF;
+  font-size: 1.5rem;
   margin-left: 1rem;
 }
 @media (min-width: 768px) {
@@ -155,7 +148,6 @@
 .about-section {
   color: #323232;
   padding: 0 1rem;
-  width: 100%;
   text-align: left;
 }
 @media (min-width: 768px) {
