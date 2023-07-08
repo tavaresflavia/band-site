@@ -9,8 +9,10 @@
   font-family: Avenir;
   margin: 0;
   padding: 0;
-  border: 1px solid red;
 }
+
+
+//NAV
 
 .header{
   background-color: $primary-dark-color;
@@ -74,6 +76,8 @@
   }
 }
 
+//HERO 
+
 .hero {
   background: url(../assets/images/hero-bio.jpg) center center / cover;
   @include flex-wrapped;
@@ -119,6 +123,8 @@
   }
 }
 
+//ABOUT SECTION
+
 .about-section {
   color: $primary-dark-color;
   @include section-padding; // Mixin to change the lateral padding of main sections
@@ -127,54 +133,64 @@
   
   &__content{
     @include tablet {
-      margin:0 3.75rem;
+      margin:0 3.75rem; // Margin not specified on mockup, added value to align picture with "o" in about as per mockup 2
     }
   }
 
+  &__title {
+    @include mobile-section-header-font; 
+    @include tablet {
+      @include tablet-section-header-font; 
+    }
+  }
+
+  // Mixins sets padding, font size, weight and line-hieght 
   &__img {
-    display: block;
     max-width: 100%;
     margin-bottom:$mobile-margin;
     @include tablet {
       margin-bottom:$tablet-desktop-margin;
       
     }
-    // transform: scaleY(0.9);
   }
 
-  &__title {
-    @include mobile-section-header-font;
-    @include tablet {
-      @include tablet-section-header-font;
-    }
-  }
+  // __quote has the same font size as ___quote-author in mobile and same a __text-title after tablet width
 
-  &__quote,
   &__quote-author{
-    font-size: 0.875rem;
-    line-height: 1.375rem;
-    font-weight: 700;
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+      font-weight: 700;
+      color: $primary-dark-color;
+    
   }
 
-  &__quote,
-  &__text-title {
+  &__quote{
+    @extend .about-section__quote-author;
+  
     @include tablet {
+      margin-bottom: 0.5rem;
       font-size: 1.5rem;
       line-height: 2rem;
     }
   }
 
   &__text-title {
-    color: #000000;
+    @extend .about-section__quote-author;
     font-weight: 600;
+    color: #000000;
     padding: 1.5rem 0 1rem;
+
     @include tablet{
     padding: 3rem 0 2.25rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2rem;
     }
   }
 
+  // Mixins sets font size, weight and line-hieght 
   &__text {
-    @include mobile-body-font;
+    @include mobile-body-font; 
 
     @include tablet {
       @include tablet-body-font;
@@ -195,26 +211,25 @@
     @include tablet{
       margin-left: $tablet-desktop-margin;
     }
-    
   }
-  
 }
 
 
+//GALLERY SECTION  
 
 .gallery-section {
   background-color: #fafafa;
-  @include section-padding;
+  
 
   &__box{
-    
-  @include desktop-fixed-width;
+  @include section-padding;
+  @include desktop-fixed-width; // box created to caontain all content of the section and keep it at 1280px for desktop readablity
   }
  
   &__title {
     color: $primary-dark-color;
-    
     @include mobile-section-header-font;
+
     @include tablet {
       @include tablet-section-header-font;
       
@@ -223,43 +238,38 @@
 }
 
 .gallery {
-  max-width: 100%;
 
   @include tablet {
-    display: flex;
-    flex-direction: column;
-    
+    @include flex-wrapped(column);
   }
 
   &__row{
     @include tablet {
       display: flex;
-      max-width: 100%;
       flex-direction: row;
       margin-bottom: $tablet-desktop-margin;
-      flex-shrink: 1;
     }
   }
 
-  &__row--bottom{
+// changed the bottom row padding  to ensure spacing between gallery section and footer
+  &__row--bottom{ 
     @include tablet {
     margin-bottom: $tablet-margin-edge;
     }
-
   }
 
   &__img-box {
-    max-width: 100%;
     padding-bottom: $mobile-margin;
-
     @include tablet {
-      padding: 0;
+      padding-bottom: 0;
     }
   }
 
   &__img {
     width: 100%;
     height: 100%;
+    display:block; // added to remove extra space on __img_box
+  
     filter: grayscale(1);
 
     &:hover{
@@ -267,6 +277,7 @@
 
     }
   }
+
   &__img-box--middle {
     @include tablet {
       margin: 0px $tablet-desktop-margin;
@@ -276,13 +287,13 @@
 
 .footer {
   color: $primary-light-color;
-  @include section-padding;
   background-color: $primary-dark-color;
   
-
+  
   &__box{
-    position: relative;
+    @include section-padding;
     @include desktop-fixed-width;
+    position: relative; // Added relative position to be able to control the position of the logo (set as absolute)
   }
 
 
@@ -296,43 +307,53 @@
 
   &__social-bar {
     width: 8rem;
-    @include flex-wrapped;
-    justify-content: space-between;
+    margin-bottom: $mobile-margin;
+    @include flex-wrapped(row, space-between);
+   
     @include tablet {
       display: inline-flex;
       margin-left: $tablet-desktop-margin;
     }
   }
 
-  &__contact-box {
+  &__contact-row {
     @include tablet {
-      @include flex-wrapped;
-      width: 100%;
-      justify-content: space-between;
+      @include flex-wrapped(row,space-between);
     }
     @include desktop{
-      max-width: 75%;
+      max-width: 75%; //approximation to make the contact box follow the alignment on the mockup 
+    }
+  }
+  
+  &__contact-box{
+    @include tablet{
+      width:30%;
     }
   }
 
-  &__item{
-    margin-bottom: $mobile-margin;
+  &__contact-info{
+    padding-bottom: $mobile-margin;
     font-size: 0.875rem;
     line-height: 1.375rem;
     font-weight: 400;
+    @include tablet{
+      padding-bottom: $tablet-desktop-margin;
+    }
   }
 
   &__copyright {
-    @extend .footer__item;
-    margin:0;
-    padding: $mobile-margin  0;
+    @extend .footer__contact-info;
+    padding-top: $mobile-margin;
+    @include tablet{
+      padding-top: 0.75rem; //top padding of 12px, to be summed up with bottom padding of contact info to 36px 
+    }
   }
   &__email-link{
     text-decoration: none;
     color:$primary-light-color;
   }
 
-  &__item--bold {
+  &__contact-info--bold {
     font-weight: 600;
   }
 
@@ -345,8 +366,8 @@
       display: inline;
       position: absolute;
       left: calc(
-        100% - 7.5rem
-      ); // top margin for heading in tablet plus half of logo height
+        100% - 7.5rem - $tablet-desktop-margin
+      ); //100% of thw width -  logo width - 
       top: calc(
         3rem + 0.625rem
       ); // top margin for heading in tablet plus half of logo height
