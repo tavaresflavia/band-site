@@ -9,10 +9,11 @@
   font-family: Avenir;
   margin: 0;
   padding: 0;
+  border: 1px solid red;
 }
 
 .header{
-  background-color: $primary-dark-font-color;
+  background-color: $primary-dark-color;
 }
 
 .nav {
@@ -22,11 +23,12 @@
     flex-direction: row;
   }
 
-  @include desktop-fixed-width;
+  @include desktop-fixed-width; // Added to keep fixed with on the center for desktop
 
   &__logo-link {
     @include flex-wrapped(row,center);
     padding-top: $mobile-margin;
+   
 
     @include tablet {
       padding: $tablet-desktop-margin $tablet-margin-edge $tablet-desktop-margin;
@@ -38,11 +40,13 @@
     list-style: none;
 
     font-size: 0.625rem;
+    line-height: 1.25rem;
 
     @include tablet {
       font-size: 0.75rem;
     }
   }
+
   &__link-box {
     width: 50%;
     text-align: center;
@@ -50,19 +54,21 @@
     
     @include tablet {
       width:auto;
-      padding: 2.25rem 0; // space to show hoover border effect
-      margin:0 2.25rem; // keep links separated without affecting hoover efect
+      padding: 2.25rem 0; // Added space to show hoover border effect with same width as the link
+      margin:0 2.25rem; // Added to keep links separated without affecting hoover efect
     }
     &:hover {
-      border-bottom: 2px solid $primary-light-font-color;
+      border-bottom: 2px solid $primary-light-color;
     }
   }
 
   &__link {
     text-decoration: none;
-    color: $inactive-font-color;
+    color: $inactive-color;
+    line-height: 1.25rem;
+
     &:active {
-      color: $primary-light-font-color;
+      color: $primary-light-color; 
       font-weight: 700;
     }
   }
@@ -70,10 +76,10 @@
 
 .hero {
   background: url(../assets/images/hero-bio.jpg) center center / cover;
-  height: 30vh;
-
   @include flex-wrapped;
   align-items: center;
+
+  height: 30vh;
   @include tablet {
     height: 60vh;
   }
@@ -82,32 +88,28 @@
     height: 90vh;
   }
 
+  // layer to darken the picture, grows folowing the same pattern as .hero 
+  
   &::before {
     content: "";
-    background-color: rgba(50, 50, 50, 0.5);
-    height: 30vh;
     width: 100%;
-    @include tablet {
-      height: 60vh;
-    }
-    @include desktop {
-      height: 90vh;
-    }
+    background-color: rgba(50, 50, 50, 0.5);
+    height: 100%;
+
   }
 
   &__title-box {
-    position: absolute;
+    position: absolute; // Added to change the z-index and to reposition for desktop
     z-index: 10;
     @include desktop{
-      left: calc((100% - $fixed-width)/2);
+      left: calc((100% - $fixed-width)/2); // fixed-width: is the max content width display after 1280px (desktop)
     }
   }
 
-
   &__title{
     font-weight: 600;
+    color: $primary-light-color;
     font-size: 1.5rem;
-    color: $primary-light-font-color;
     margin-left: $mobile-margin;
     @include tablet {
       font-size: 3.75rem;
@@ -118,18 +120,15 @@
 }
 
 .about-section {
-  color: $primary-dark-font-color;
-  @include section-padding;
-  width: 100%;
+  color: $primary-dark-color;
+  @include section-padding; // Mixin to change the lateral padding of main sections
   text-align: left;
-  @include desktop-fixed-width;
+  @include desktop-fixed-width;// Mixin to change the keep content width fixed and centralized (margin:auto)
   
-
   &__content{
     @include tablet {
       margin:0 3.75rem;
     }
-
   }
 
   &__img {
@@ -213,7 +212,7 @@
   }
  
   &__title {
-    color: $primary-dark-font-color;
+    color: $primary-dark-color;
     
     @include mobile-section-header-font;
     @include tablet {
@@ -276,9 +275,9 @@
 }
 
 .footer {
-  color: $primary-light-font-color;
+  color: $primary-light-color;
   @include section-padding;
-  background-color: $primary-dark-font-color;
+  background-color: $primary-dark-color;
   
 
   &__box{
@@ -330,7 +329,7 @@
   }
   &__email-link{
     text-decoration: none;
-    color:$primary-light-font-color;
+    color:$primary-light-color;
   }
 
   &__item--bold {
