@@ -1,25 +1,32 @@
 @use './variables' as *;
 
+<<<<<<< HEAD
+=======
+
+//Mixin to set display as flex and wrap content
+>>>>>>> sprint1
 @mixin flex-wrapped ($flex-direction:row,$jufity-content:flex-start){
     display: flex;
     flex-wrap: wrap;
     flex-direction: $flex-direction;
     justify-content: $jufity-content;
-
 }
 
+//Mixins to set tablet and desktop width threshold
 @mixin tablet {
     @media (min-width: $tablet-width) {
       @content;
     }
   }
   
-  @mixin desktop {
-    @media (min-width: $desktop-width) {
-      @content;
-    }
+@mixin desktop {
+  @media (min-width: $desktop-width) {
+    @content;
   }
+}
   
+  // Mixins to set HEADER padding, font size, line-hieght and weight 
+
   @mixin mobile-section-header-font{
     font-size: 1.5rem;
     line-height: 2rem;
@@ -33,6 +40,8 @@
     font-weight: 600;
     padding: 3rem 0 2.25rem;
   }
+
+ // Mixins to set BODY TEXT padding, font size, line-hieght and weight 
 
   @mixin mobile-body-font{
     font-size: 0.8125rem;
