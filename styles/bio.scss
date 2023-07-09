@@ -56,8 +56,8 @@
     
     @include tablet {
       width:auto;
-      padding: 2.25rem 0; // Added space to show hoover border effect with same width as the link
-      margin:0 2.25rem; // Added to keep links separated without affecting hoover efect
+      padding: $tablet-margin-edge 0; // Added space to show hoover border effect with same width as the link
+      margin:0 $tablet-margin-edge; // Added to keep links separated without affecting hoover efect
     }
     &:hover {
       border-bottom: 2px solid $primary-light-color;
@@ -133,7 +133,7 @@
   
   &__content{
     @include tablet {
-      margin:0 3.75rem; // Margin not specified on mockup, added value to align picture with "o" in about as per mockup 2
+      margin:0 3.75rem; // Margin not specified, added value to align picture with "o" in about as per mockup 2
     }
   }
 
@@ -172,6 +172,10 @@
       font-size: 1.5rem;
       line-height: 2rem;
     }
+
+    @include desktop{ // Fixed width added to match mock up 3
+      width: 47rem;
+    }
   }
 
   &__text-title {
@@ -181,7 +185,7 @@
     padding: 1.5rem 0 1rem;
 
     @include tablet{
-    padding: 3rem 0 2.25rem;
+    padding: 3rem 0 $tablet-margin-edge;
     font-weight: 700;
     font-size: 1.5rem;
     line-height: 2rem;
