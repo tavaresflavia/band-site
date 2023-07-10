@@ -9,7 +9,6 @@
   font-family: Avenir;
   margin: 0;
   padding: 0;
-  border: 1px solid red;
 }
 
 
@@ -57,13 +56,8 @@
     
     @include tablet {
       width:auto;
-<<<<<<< HEAD
-      padding: 2.25rem 0; // Added space to show hoover border effect with same width as the link
-      margin:0 2.25rem; // Added to keep links separated without affecting hoover efect
-=======
       padding: $tablet-margin-edge 0; // Added space to show hoover border effect with same width as the link
       margin:0 $tablet-margin-edge; // Added to keep links separated without affecting hoover efect
->>>>>>> sprint1
     }
     &:hover {
       border-bottom: 2px solid $primary-light-color;
@@ -129,11 +123,8 @@
   }
 }
 
-<<<<<<< HEAD
-=======
 //ABOUT SECTION
 
->>>>>>> sprint1
 .about-section {
   color: $primary-dark-color;
   @include section-padding; // Mixin to change the lateral padding of main sections
@@ -241,10 +232,6 @@
  
   &__title {
     color: $primary-dark-color;
-<<<<<<< HEAD
-    
-=======
->>>>>>> sprint1
     @include mobile-section-header-font;
 
     @include tablet {
@@ -304,13 +291,8 @@
 
 .footer {
   color: $primary-light-color;
-<<<<<<< HEAD
-  @include section-padding;
-  background-color: $primary-dark-color;
-=======
   background-color: $primary-dark-color;
   
->>>>>>> sprint1
   
   &__box{
     @include section-padding;
