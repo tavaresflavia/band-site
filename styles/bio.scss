@@ -3,8 +3,7 @@
 @use "./partials/mixins" as *;
 @use "./partials/global" as *;
 
-
-//HERO 
+//HERO
 
 .hero {
   background: url(../assets/images/hero-bio.jpg) center center / cover;
@@ -20,25 +19,26 @@
     height: 90vh;
   }
 
-  // layer to darken the picture, grows folowing the same pattern as .hero 
-  
+  // layer to darken the picture, grows folowing the same pattern as .hero
+
   &::before {
     content: "";
     width: 100%;
     background-color: rgba(50, 50, 50, 0.5);
     height: 100%;
-
   }
 
   &__title-box {
     position: absolute; // Added to change the z-index and to reposition for desktop
     z-index: 10;
-    @include desktop{
-      left: calc((100% - $fixed-width)/2); // fixed-width: is the max content width display after 1280px (desktop)
+    @include desktop {
+      left: calc(
+        (100% - $fixed-width) / 2
+      ); // fixed-width: is the max content width display after 1280px (desktop)
     }
   }
 
-  &__title{
+  &__title {
     font-weight: 600;
     color: $primary-light-color;
     font-size: 1.5rem;
@@ -47,7 +47,6 @@
       font-size: 3.75rem;
       margin-left: $tablet-margin-edge;
     }
-
   }
 }
 
@@ -57,51 +56,50 @@
   color: $primary-dark-color;
   @include section-padding; // Mixin to change the lateral padding of main sections
   text-align: left;
-  @include desktop-fixed-width;// Mixin to change the keep content width fixed and centralized (margin:auto)
-  
-  &__content{
+  @include desktop-fixed-width; // Mixin to change the keep content width fixed and centralized (margin:auto)
+
+  &__content {
     @include tablet {
-      margin:0 3.75rem; // Margin not specified, added value to align picture with "o" in about as per mockup 2
+      margin: 0 3.75rem; // Margin not specified, added value to align picture with "o" in about as per mockup 2
     }
   }
 
   &__title {
-    @include mobile-section-header-font; 
+    @include mobile-section-header-font;
     @include tablet {
-      @include tablet-section-header-font; 
+      @include tablet-section-header-font;
     }
   }
 
-  // Mixins sets padding, font size, weight and line-hieght 
+  // Mixins sets padding, font size, weight and line-hieght
   &__img {
     max-width: 100%;
-    margin-bottom:$mobile-margin;
+    margin-bottom: $mobile-margin;
     @include tablet {
-      margin-bottom:$tablet-desktop-margin;
-      
+      margin-bottom: $tablet-desktop-margin;
     }
   }
 
   // __quote has the same font size as ___quote-author in mobile and same a __text-title after tablet width
 
-  &__quote-author{
-      font-size: 0.875rem;
-      line-height: 1.375rem;
-      font-weight: 700;
-      color: $primary-dark-color;
-    
+  &__quote-author {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 700;
+    color: $primary-dark-color;
   }
 
-  &__quote{
+  &__quote {
     @extend .about-section__quote-author;
-  
+
     @include tablet {
       margin-bottom: 0.5rem;
       font-size: 1.5rem;
       line-height: 2rem;
     }
 
-    @include desktop{ // Fixed width added to match mock up 3
+    @include desktop {
+      // Fixed width added to match mock up 3
       width: 47rem;
     }
   }
@@ -112,70 +110,65 @@
     color: #000000;
     padding: 1.5rem 0 1rem;
 
-    @include tablet{
-    padding: 3rem 0 $tablet-margin-edge;
-    font-weight: 700;
-    font-size: 1.5rem;
-    line-height: 2rem;
+    @include tablet {
+      padding: 3rem 0 $tablet-margin-edge;
+      font-weight: 700;
+      font-size: 1.5rem;
+      line-height: 2rem;
     }
   }
 
-  // Mixins sets font size, weight and line-hieght 
+  // Mixins sets font size, weight and line-hieght
   &__text {
-    @include mobile-body-font; 
+    @include mobile-body-font;
 
     @include tablet {
       @include tablet-body-font;
       display: flex;
     }
   }
-  
 
-  &__paragraph-1{
+  &__paragraph-1 {
     margin-bottom: $mobile-margin;
     @include tablet {
       margin-bottom: $tablet-desktop-margin;
     }
   }
 
-  &__paragraph-2{
+  &__paragraph-2 {
     @extend .about-section__paragraph-1;
-    @include tablet{
+    @include tablet {
       margin-left: $tablet-desktop-margin;
     }
   }
 }
 
-
-//GALLERY SECTION  
+//GALLERY SECTION
 
 .gallery-section {
   background-color: #fafafa;
-  
 
-  &__box{
-  @include section-padding;
-  @include desktop-fixed-width; // box created to caontain all content of the section and keep it at 1280px for desktop readablity
+  &__box {
+    @include section-padding;
+    @include desktop-fixed-width; // box created to caontain all content of the section and keep it at 1280px for desktop readablity
   }
- 
+
   &__title {
     color: $primary-dark-color;
     @include mobile-section-header-font;
 
     @include tablet {
       @include tablet-section-header-font;
-      
     }
   }
 }
 
 .gallery {
-
   @include tablet {
     @include flex-wrapped(column);
   }
 
-  &__row{
+  &__row {
     @include tablet {
       display: flex;
       flex-direction: row;
@@ -183,10 +176,10 @@
     }
   }
 
-// changed the bottom row padding  to ensure spacing between gallery section and footer
-  &__row--bottom{ 
+  // changed the bottom row padding  to ensure spacing between gallery section and footer
+  &__row--bottom {
     @include tablet {
-    margin-bottom: $tablet-margin-edge;
+      margin-bottom: $tablet-margin-edge;
     }
   }
 
@@ -200,13 +193,12 @@
   &__img {
     width: 100%;
     height: 100%;
-    display:block; // added to remove extra space on __img_box
-  
+    display: block; // added to remove extra space on __img_box
+
     filter: grayscale(1);
 
-    &:hover{
+    &:hover {
       filter: grayscale(0);
-
     }
   }
 
@@ -219,12 +211,79 @@
 
 //Join the Conversation
 
-.comment-section{
+.comment-section {
+  &__box {
+    @include section-padding;
+    @include desktop-fixed-width;
+  }
+
+  &__form {
+    display: inline-flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    // width:100%;
+  }
 
   &__title {
-    @include mobile-section-header-font; 
+    @include mobile-section-header-font;
     @include tablet {
-      @include tablet-section-header-font; 
+      @include tablet-section-header-font;
     }
+  }
+
+  &__avatar {
+    display: inline-block;
+    width: 2.25rem;
+    height: 2.25rem;
+    overflow: hidden;
+    border-radius: 50%;
+    @include tablet {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  &__avatar-img {
+    height: 100%;
+  }
+
+  &__label {
+    margin-left: 3.125rem;
+  }
+
+  &__name-box {
+    @include flex-wrapped(row, space-between);
+  }
+
+  &__name {
+    
+    height: 2.25rem;
+    width: calc(100% - 3.125rem);
+    display: inline-block;
+    margin-bottom: 1rem;
+    @include tablet{
+      width: calc(100% - 3.125rem - 4.5rem);
+    }
+  }
+
+  &__comment {
+    width: calc(100% - 3.125rem);
+    margin-left: 3.125rem;
+  }
+
+  &__button-box {
+    border-radius: 0.125rem;
+    background-color: $primary-dark-color;
+    margin: 1rem 0 1rem 3.125rem;
+    height: 2.25rem;
+    width: calc(100% - 3.125rem);
+    @include flex-wrapped(row, center);
+    align-items: center;
+  }
+
+  &__button {
+    text-decoration: none;
+    color: $primary-light-color;
+    font-weight: 600;
   }
 }

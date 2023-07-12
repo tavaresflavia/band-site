@@ -17,7 +17,7 @@
             <a href="./index.html" class="nav__link">Biography</a>
           </li>
           <li class="nav__link-box">
-            <a href="" class="nav__link">Shows</a>
+            <a href="./pages/shows.html" class="nav__link">Shows</a>
           </li>
         </ul>
       </nav>
@@ -141,15 +141,36 @@
       </section>
 
       <section class="comment-section">
-        <div class="img">
-          <img src="./assets/images/Mohan-muruge.jpg" alt="">
+        <div class="comment-section__box">
+          <h2 class="comment-section__title">Join the Conversation</h2>
+          <label class="comment-section__label label" for="name">NAME</label>
+          <div class="comment-section__name-box">
+            <div class="comment-section__avatar">
+              <img
+                class="comment-section__avatar-img"
+                src="./assets/images/Mohan-muruge.jpg"
+                alt="" />
+            </div>
+            <input
+              type="text"
+              class="comment-section__name"
+              id="name"
+              placeholder="Enter your name" />
+          </div>
+          <label class="comment-section__label label" for="comment"
+            >COMMENT</label
+          >
+          <textarea
+            name="comment"
+            id="comment"
+            cols="30"
+            rows="10"
+            class="comment-section__comment"
+            placeholder="Add new comment"></textarea>
+          <a href="" class="comment-section__button"
+            ><div class="comment-section__button-box">COMMENT</div></a
+          >
         </div>
-        <h2 class="comment-section__title">Join the Conversation</h2>
-        <label class="comment-section__label" for="name">NAME</label>
-        <input type="text" class="comment-section__name" id="name" placeholder="Enter your name">
-        <label class="comment-section__label" for="comment">COMMENT</label>
-        <input type="text" class="comment-section__comment" id="comment" placeholder="Add new comment" >
-
       </section>
     </main>
 
@@ -186,7 +207,8 @@
             </div>
             <p class="footer__contact-info">
               <a href="mailto:info@thebeesknees.com" class="footer__email-link"
-                >info@thebeesknees.com</a>
+                >info@thebeesknees.com</a
+              >
             </p>
           </div>
 
@@ -203,7 +225,8 @@
               <a
                 class="footer__email-link"
                 href="mailto:pearl.gregg@limitlessag.com"
-                >pearl.gregg@limitlessag.com</a>
+                >pearl.gregg@limitlessag.com</a
+              >
             </p>
           </div>
 
@@ -220,7 +243,8 @@
               <a
                 class="footer__email-link"
                 href="mailto:cwhyte@archentertainment.com"
-                >cwhyte@archentertainment.com</a>
+                >cwhyte@archentertainment.com</a
+              >
             </p>
           </div>
         </section>

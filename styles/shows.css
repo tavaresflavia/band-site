@@ -29,6 +29,12 @@
   background-color: #323232;
 }
 
+.label {
+  font-size: 0.875rem;
+  color: #AFAFAF;
+  font-weight: 600;
+}
+
 .nav {
   display: flex;
   flex-wrap: wrap;
@@ -211,7 +217,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  height: 30vh;
+  height: 35vh;
 }
 @media (min-width: 768px) {
   .hero {
@@ -221,6 +227,10 @@
 @media (min-width: 1280px) {
   .hero {
     height: 90vh;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
   }
 }
 .hero::before {
@@ -229,24 +239,91 @@
   background-color: rgba(50, 50, 50, 0.5);
   height: 100%;
 }
-.hero__title-box {
+.hero__box {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
   position: absolute;
   z-index: 10;
 }
-@media (min-width: 1280px) {
-  .hero__title-box {
-    left: calc((100% - 80rem) / 2);
+@media (min-width: 768px) {
+  .hero__box {
+    padding: 2.25rem;
   }
 }
-.hero__title {
-  font-weight: 600;
+@media (min-width: 1280px) {
+  .hero__box {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80rem;
+  }
+}
+.hero__title-box {
   color: #FFFFFF;
+}
+.hero__album {
+  font-size: 0.875rem;
+}
+.hero__title {
+  width: 8.5em;
+  font-weight: 600;
   font-size: 1.5rem;
-  margin-left: 1rem;
 }
 @media (min-width: 768px) {
   .hero__title {
     font-size: 3.75rem;
-    margin-left: 2.25rem;
   }
+}
+.hero__song {
+  height: 7rem;
+  width: 18rem;
+}
+@media (min-width: 768px) {
+  .hero__song {
+    width: 26rem;
+    height: 10rem;
+  }
+}
+
+.shows-section__title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  padding: 1.5rem 0 1rem;
+}
+@media (min-width: 768px) {
+  .shows-section__title {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+    font-weight: 600;
+    padding: 3rem 0 2.25rem;
+  }
+}
+.shows-section__box {
+  padding: 0 1rem;
+}
+@media (min-width: 768px) {
+  .shows-section__box {
+    padding: 0 2.25rem;
+  }
+}
+@media (min-width: 1280px) {
+  .shows-section__box {
+    max-width: 80rem;
+    margin: auto;
+  }
+}
+
+.card__link {
+  text-decoration: none;
+  color: #FFFFFF;
+  background-color: #323232;
+  font-weight: 600;
+  padding: 1rem;
 }/*# sourceMappingURL=shows.css.map */

@@ -3,50 +3,97 @@
 @use "./partials/mixins" as *;
 @use "./partials/global" as *;
 
-
-//HERO 
+//HERO
 
 .hero {
-    background: url(../assets/images/hero-shows.jpg) center center / cover;
-    @include flex-wrapped;
-    align-items: center;
-  
-    height: 30vh;
+  background: url(../assets/images/hero-shows.jpg) center center / cover;
+  @include flex-wrapped;
+  align-items: center;
+  height: 35vh;
+  @include tablet {
+    height: 60vh;
+  }
+  @include desktop {
+    height: 90vh;
+    @include flex-wrapped(row, center);
+  }
+
+  // layer to darken the picture, grows folowing the same pattern as .hero
+
+  &::before {
+    content: "";
+    width: 100%;
+    background-color: rgba(50, 50, 50, 0.5);
+    height: 100%;
+  }
+
+  &__box {
+    width: 100%;
+    padding: $mobile-margin;
+    @include flex-wrapped(column, center);
+    position: absolute; // Added to change the z-index and to reposition for desktop
+    z-index: 10;
     @include tablet {
-      height: 60vh;
+      padding: $tablet-margin-edge;
     }
-  
     @include desktop {
-      height: 90vh;
-    }
-  
-    // layer to darken the picture, grows folowing the same pattern as .hero 
-    
-    &::before {
-      content: "";
-      width: 100%;
-      background-color: rgba(50, 50, 50, 0.5);
-      height: 100%;
-  
-    }
-  
-    &__title-box {
-      position: absolute; // Added to change the z-index and to reposition for desktop
-      z-index: 10;
-      @include desktop{
-        left: calc((100% - $fixed-width)/2); // fixed-width: is the max content width display after 1280px (desktop)
-      }
-    }
-  
-    &__title{
-      font-weight: 600;
-      color: $primary-light-color;
-      font-size: 1.5rem;
-      margin-left: $mobile-margin;
-      @include tablet {
-        font-size: 3.75rem;
-        margin-left: $tablet-margin-edge;
-      }
-  
+      @include flex-wrapped(row, space-between);
+      align-items: center;
+      width: 80rem;
     }
   }
+
+  &__title-box {
+    color: $primary-light-color;
+  }
+
+  &__album {
+    font-size: 0.875rem;
+  }
+
+  &__title {
+    width: 8.5em;
+    font-weight: 600;
+    font-size: 1.5rem;
+    @include tablet {
+      font-size: 3.75rem;
+    }
+  }
+  &__song {
+    height: 7rem;
+    width: 18rem;
+    @include tablet {
+      width: 26rem;
+      height: 10rem;
+    }
+  }
+}
+
+//SHOWS
+.shows-section {
+  &__title {
+    @include mobile-section-header-font;
+    @include tablet {
+      @include tablet-section-header-font;
+    }
+  }
+  &__box {
+    @include section-padding;
+    @include desktop-fixed-width;
+  }
+}
+.card {
+  // &__value {
+
+  // }
+  // &__button {
+  // }
+  &__link {
+    text-decoration: none;
+    color:$primary-light-color;
+    background-color: $primary-dark-color;
+    font-weight: 600;
+    padding:1rem;
+
+  }
+}

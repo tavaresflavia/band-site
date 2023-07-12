@@ -20,6 +20,12 @@
   background-color: $primary-dark-color;
 }
 
+.label{
+  font-size: 0.875rem;
+  color: $secondary-light-color;
+  font-weight: 600;
+}
+
 .nav {
   @include flex-wrapped(column);
 
