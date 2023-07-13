@@ -83,17 +83,31 @@
   }
 }
 .card {
-  // &__value {
 
-  // }
-  // &__button {
-  // }
-  &__link {
-    text-decoration: none;
-    color:$primary-light-color;
-    background-color: $primary-dark-color;
-    font-weight: 600;
-    padding:1rem;
+  border-bottom: 1px solid $inactive-color;
+  margin-bottom: $mobile-margin;
+  @include tablet{
+    @include flex-wrapped(row,space-between);
+    align-items: center;
+  }
 
+  &__label{
+    @include tablet{
+    display: none;
+  }
+  }
+
+  &__value {
+    margin-bottom: $mobile-margin;
+    width: 10rem;
+
+  }
+  &__button {
+    margin-bottom: $mobile-margin;
+    width: 100%;
+    padding: 0.5313rem 0;
+    @include tablet{
+      width: 10rem;
+    }
   }
 }

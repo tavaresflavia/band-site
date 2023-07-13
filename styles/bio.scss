@@ -218,10 +218,15 @@
   }
 
   &__form {
-    display: inline-flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    // width:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid $inactive-color;
+
+    @include desktop {
+      width: 40rem;
+      margin: 0 auto;
+    }
   }
 
   &__title {
@@ -232,8 +237,8 @@
   }
 
   &__avatar {
-    display: inline-block;
-    width: 2.25rem;
+    margin: $mobile-margin $mobile-margin 0 0;
+    min-width: 2.25rem;
     height: 2.25rem;
     overflow: hidden;
     border-radius: 50%;
@@ -247,43 +252,76 @@
     height: 100%;
   }
 
-  &__label {
-    margin-left: 3.125rem;
+  &__inputs {
+    width: 100%;
+    margin-bottom: $mobile-margin;
   }
 
+  &__name-input {
+    height: 2.25rem;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  &__comment-input {
+    width: 100%;
+  }
+}
+
+.comment-card {
+  display: flex;
+  margin: 1rem 0;
+  border-bottom: 1px solid $inactive-color;
+  
+  @include desktop {
+    width: 40rem;
+    margin: 0 auto;
+  }
+  
+
+  &__avatar-box{
+    margin-right: $mobile-margin;
+
+  }
+  &__avatar {
+    min-width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 50%;
+    background-color: $inactive-color;
+  }
+  &__content {
+    width:100%;
+    margin: 0 1rem;
+
+  }
   &__name-box {
     @include flex-wrapped(row, space-between);
-  }
-
-  &__name {
     
-    height: 2.25rem;
-    width: calc(100% - 3.125rem);
-    display: inline-block;
-    margin-bottom: 1rem;
-    @include tablet{
-      width: calc(100% - 3.125rem - 4.5rem);
-    }
+    
   }
-
-  &__comment {
-    width: calc(100% - 3.125rem);
-    margin-left: 3.125rem;
-  }
-
-  &__button-box {
-    border-radius: 0.125rem;
-    background-color: $primary-dark-color;
-    margin: 1rem 0 1rem 3.125rem;
-    height: 2.25rem;
-    width: calc(100% - 3.125rem);
-    @include flex-wrapped(row, center);
-    align-items: center;
-  }
-
-  &__button {
-    text-decoration: none;
-    color: $primary-light-color;
+  &__name{
+    @extend .about-section__quote-author;
     font-weight: 600;
+  }
+  
+  &__date{
+    
+    color:$inactive-color;
+    @include mobile-body-font;
+
+    @include tablet {
+      @include tablet-body-font;
+    }
+
+  }
+  &__text{
+    margin: 1rem 0;
+    @include mobile-body-font;
+
+    @include tablet {
+      @include tablet-body-font;
+    }
+    
+   
   }
 }

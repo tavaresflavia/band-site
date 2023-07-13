@@ -20,9 +20,12 @@
 *::after,
 *::before {
   box-sizing: border-box;
-  font-family: Avenir;
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: "Avenir";
 }
 
 .header {
@@ -33,6 +36,20 @@
   font-size: 0.875rem;
   color: #AFAFAF;
   font-weight: 600;
+}
+
+.button {
+  background-color: #323232;
+  text-decoration: none;
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 2px;
+  height: 2.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav {
@@ -301,7 +318,7 @@
     margin-bottom: 1.5rem;
   }
 }
-.about-section__quote-author, .about-section__text-title, .about-section__quote {
+.about-section__quote-author, .comment-card__name, .about-section__text-title, .about-section__quote {
   font-size: 0.875rem;
   line-height: 1.375rem;
   font-weight: 700;
@@ -450,9 +467,16 @@
   }
 }
 .comment-section__form {
-  display: inline-flex;
-  flex-wrap: wrap;
-  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid #E1E1E1;
+}
+@media (min-width: 1280px) {
+  .comment-section__form {
+    width: 40rem;
+    margin: 0 auto;
+  }
 }
 .comment-section__title {
   font-size: 1.5rem;
@@ -469,8 +493,8 @@
   }
 }
 .comment-section__avatar {
-  display: inline-block;
-  width: 2.25rem;
+  margin: 1rem 1rem 0 0;
+  min-width: 2.25rem;
   height: 2.25rem;
   overflow: hidden;
   border-radius: 50%;
@@ -484,44 +508,75 @@
 .comment-section__avatar-img {
   height: 100%;
 }
-.comment-section__label {
-  margin-left: 3.125rem;
+.comment-section__inputs {
+  width: 100%;
+  margin-bottom: 1rem;
 }
-.comment-section__name-box {
+.comment-section__name-input {
+  height: 2.25rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.comment-section__comment-input {
+  width: 100%;
+}
+
+.comment-card {
+  display: flex;
+  margin: 1rem 0;
+  border-bottom: 1px solid #E1E1E1;
+}
+@media (min-width: 1280px) {
+  .comment-card {
+    width: 40rem;
+    margin: 0 auto;
+  }
+}
+.comment-card__avatar-box {
+  margin-right: 1rem;
+}
+.comment-card__avatar {
+  min-width: 3.125rem;
+  height: 3.125rem;
+  border-radius: 50%;
+  background-color: #E1E1E1;
+}
+.comment-card__content {
+  width: 100%;
+  margin: 0 1rem;
+}
+.comment-card__name-box {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
 }
-.comment-section__name {
-  height: 2.25rem;
-  width: calc(100% - 3.125rem);
-  display: inline-block;
-  margin-bottom: 1rem;
+.comment-card__name {
+  font-weight: 600;
+}
+.comment-card__date {
+  color: #E1E1E1;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
 }
 @media (min-width: 768px) {
-  .comment-section__name {
-    width: calc(100% - 3.125rem - 4.5rem);
+  .comment-card__date {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 400;
   }
 }
-.comment-section__comment {
-  width: calc(100% - 3.125rem);
-  margin-left: 3.125rem;
+.comment-card__text {
+  margin: 1rem 0;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
 }
-.comment-section__button-box {
-  border-radius: 0.125rem;
-  background-color: #323232;
-  margin: 1rem 0 1rem 3.125rem;
-  height: 2.25rem;
-  width: calc(100% - 3.125rem);
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.comment-section__button {
-  text-decoration: none;
-  color: #FFFFFF;
-  font-weight: 600;
+@media (min-width: 768px) {
+  .comment-card__text {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 400;
+  }
 }/*# sourceMappingURL=bio.css.map */

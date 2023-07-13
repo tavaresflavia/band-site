@@ -143,33 +143,36 @@
       <section class="comment-section">
         <div class="comment-section__box">
           <h2 class="comment-section__title">Join the Conversation</h2>
-          <label class="comment-section__label label" for="name">NAME</label>
-          <div class="comment-section__name-box">
+          <form class="comment-section__form">
             <div class="comment-section__avatar">
               <img
                 class="comment-section__avatar-img"
                 src="./assets/images/Mohan-muruge.jpg"
                 alt="" />
             </div>
-            <input
-              type="text"
-              class="comment-section__name"
-              id="name"
-              placeholder="Enter your name" />
-          </div>
-          <label class="comment-section__label label" for="comment"
-            >COMMENT</label
-          >
-          <textarea
-            name="comment"
-            id="comment"
-            cols="30"
-            rows="10"
-            class="comment-section__comment"
-            placeholder="Add new comment"></textarea>
-          <a href="" class="comment-section__button"
-            ><div class="comment-section__button-box">COMMENT</div></a
-          >
+            <div class="comment-section__inputs">
+              <label class="comment-section__label label" for="name"
+                >NAME</label
+              >
+              <input
+                type="text"
+                class="comment-section__name-input"
+                id="name"
+                placeholder="Enter your name" />
+              <label class="comment-section__label label" for="comment"
+                >COMMENT</label
+              >
+              <textarea
+                name="comment"
+                id="comment"
+                cols="30"
+                rows="10"
+                class="comment-section__comment-input"
+                placeholder="Add new comment"></textarea>
+              <button class="comment-section__button button" type="submit">COMMENT</button>
+            </div>
+          </form>
+          <section class="comment-cards"></section>
         </div>
       </section>
     </main>
@@ -258,5 +261,6 @@
         </p>
       </div>
     </footer>
+    <script src="./scripts/index-page.js"></script>
   </body>
 </html>
