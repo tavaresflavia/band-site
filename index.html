@@ -143,15 +143,15 @@
       <section class="comment-section">
         <div class="comment-section__box">
           <h2 class="comment-section__title">Join the Conversation</h2>
-          <form class="comment-section__form">
-            <div class="comment-section__avatar">
+          <div class="comment-section__form-box">
+            <div class="comment-section__avatar-box">
               <img
                 class="comment-section__avatar-img"
                 src="./assets/images/Mohan-muruge.jpg"
                 alt="" />
             </div>
-            <div class="comment-section__inputs">
-              <label class="comment-section__label label" for="name"
+            <form class="comment-section__form">
+              <label class="comment-section__label labels" for="name"
                 >NAME</label
               >
               <input
@@ -159,19 +159,21 @@
                 class="comment-section__name-input"
                 id="name"
                 placeholder="Enter your name" />
-              <label class="comment-section__label label" for="comment"
+              <label class="comment-section__label labels" for="comment"
                 >COMMENT</label
               >
               <textarea
                 name="comment"
                 id="comment"
-                cols="30"
-                rows="10"
                 class="comment-section__comment-input"
                 placeholder="Add new comment"></textarea>
-              <button class="comment-section__button button" type="submit">COMMENT</button>
-            </div>
-          </form>
+              <div class="comment-section__button-box">
+                <button class="comment-section__button button" type="submit">
+                  COMMENT
+                </button>
+              </div>
+            </form>
+          </div>
           <section class="comment-cards"></section>
         </div>
       </section>

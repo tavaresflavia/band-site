@@ -32,7 +32,7 @@ body {
   background-color: #323232;
 }
 
-.label {
+.labels {
   font-size: 0.875rem;
   color: #AFAFAF;
   font-weight: 600;
@@ -43,7 +43,7 @@ body {
   text-decoration: none;
   color: #FFFFFF;
   font-weight: 600;
-  border-radius: 2px;
+  border-radius: 4px;
   height: 2.25rem;
   display: flex;
   flex-wrap: wrap;
@@ -308,6 +308,37 @@ body {
   }
 }
 
+.shows-section {
+  padding: 0 1rem;
+}
+@media (min-width: 768px) {
+  .shows-section {
+    padding: 0 2.25rem;
+  }
+}
+@media (min-width: 1280px) {
+  .shows-section {
+    max-width: 80rem;
+    margin: auto;
+  }
+}
+@media (min-width: 1280px) {
+  .shows-section {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+@media (min-width: 768px) {
+  .shows-section__table {
+    width: 100%;
+  }
+}
+@media (min-width: 1280px) {
+  .shows-section__table {
+    width: 60rem;
+    margin: 4.5rem 0 2.25rem;
+  }
+}
 .shows-section__title {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -322,24 +353,27 @@ body {
     padding: 3rem 0 2.25rem;
   }
 }
-.shows-section__box {
-  padding: 0 1rem;
+.shows-section__header {
+  display: none;
 }
 @media (min-width: 768px) {
-  .shows-section__box {
-    padding: 0 2.25rem;
+  .shows-section__header {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    width: calc(100% - 10rem - (100% - 40rem) / 3);
+    margin-bottom: 1rem;
   }
 }
-@media (min-width: 1280px) {
-  .shows-section__box {
-    max-width: 80rem;
-    margin: auto;
-  }
+.shows-section__header-label {
+  width: 10rem;
 }
 
 .card {
   border-bottom: 1px solid #E1E1E1;
-  margin-bottom: 1rem;
+  padding-top: 1rem;
+  cursor: pointer;
 }
 @media (min-width: 768px) {
   .card {
@@ -350,6 +384,12 @@ body {
     align-items: center;
   }
 }
+.card--selected {
+  background-color: #E1E1E1;
+}
+.card:hover {
+  background-color: #FAFAFA;
+}
 @media (min-width: 768px) {
   .card__label {
     display: none;
@@ -358,6 +398,10 @@ body {
 .card__value {
   margin-bottom: 1rem;
   width: 10rem;
+  color: #323232;
+}
+.card__value--bold {
+  font-weight: 600;
 }
 .card__button {
   margin-bottom: 1rem;

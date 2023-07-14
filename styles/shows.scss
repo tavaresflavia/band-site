@@ -71,42 +71,89 @@
 
 //SHOWS
 .shows-section {
+  @include section-padding;
+  @include desktop-fixed-width;
+  @include desktop {
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  &__table{
+    @include tablet{
+      width:100%;
+    }
+    @include desktop{
+    width:60rem;
+    margin: 4.5rem 0 $tablet-margin-edge;
+   
+    }
+
+  }
+
   &__title {
     @include mobile-section-header-font;
     @include tablet {
       @include tablet-section-header-font;
     }
   }
-  &__box {
-    @include section-padding;
-    @include desktop-fixed-width;
+
+  &__header {
+    display: none;
+    @include tablet {
+      @include flex-wrapped(row, space-between);
+      width: calc(
+        100% - 10rem - (100% - 40rem) / 3
+      ); // calculation to get the size of the blank space between elements (100% - 40rem)/3
+      margin-bottom: 1rem;
+    }
+  }
+  &__header-label {
+    width: 10rem;
   }
 }
-.card {
 
+.card {
   border-bottom: 1px solid $inactive-color;
-  margin-bottom: $mobile-margin;
-  @include tablet{
-    @include flex-wrapped(row,space-between);
+  padding-top: $mobile-margin;
+  cursor: pointer;
+  @include tablet {
+    @include flex-wrapped(row, space-between);
     align-items: center;
   }
 
-  &__label{
-    @include tablet{
-    display: none;
+  &--selected{
+    background-color: $inactive-color;
   }
+
+  &:hover{
+    background-color: #FAFAFA;
+
+  }
+
+  &__label {
+    @include tablet {
+      display: none;
+    }
   }
 
   &__value {
     margin-bottom: $mobile-margin;
     width: 10rem;
+    color: $primary-dark-color;
 
+  &--bold{
+    font-weight: 600;
   }
+  }
+
+
   &__button {
     margin-bottom: $mobile-margin;
     width: 100%;
     padding: 0.5313rem 0;
-    @include tablet{
+
+    @include tablet {
       width: 10rem;
     }
   }

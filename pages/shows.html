@@ -35,57 +35,25 @@
           </div>
           <iframe
             class="hero__song"
-            scrolling="no"
+            scrolling="yes"
             frameborder="no"
             allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1500265051&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
-          <div
-            style="
-              font-size: 10px;
-              color: #cccccc;
-              line-break: anywhere;
-              word-break: normal;
-              overflow: hidden;
-              white-space: nowrap;
-              text-overflow: ellipsis;
-              font-family: Interstate, Lucida Grande, Lucida Sans Unicode,
-                Lucida Sans, Garuda, Verdana, Tahoma, sans-serif;
-              font-weight: 100;
-            "></div>
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1500265051&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"></iframe>
         </div>
       </section>
 
       <section class="shows-section">
-        <div class="shows-section__box">
-        <h2 class="shows-section__title">Shows</h2>
-          <article class="card">
-            <p class="card__label label">DATE</p>
-            <p class="card__value">Mon Sept 06 2021</p>
-            <p class="card__label label">VENUE</p>
-            <p class="card__value">Ronald Lane</p>
-            <p class="card__label label">LOCATION</p>
-            <p class="card__value">San Francisco, CA</p>
-            <a href="" class="card__button button"><div>BUY TICKETS</div></a>
-          </article>
-          <article class="card">
-            <p class="card__label label">DATE</p>
-            <p class="card__value">Tue Sept 21 2021</p>
-            <p class="card__label label">VENUE</p>
-            <p class="card__value">Pier 3 East</p>
-            <p class="card__label label">LOCATION</p>
-            <p class="card__value">San Francisco, CA</p>
-            <a href="" class="card__button button"><div>BUY TICKETS</div></a>
-          </article>
-          <article class="card">
-            <p class="card__label label">DATE</p>
-            <p class="card__value">Fri Oct 15 2021</p>
-            <p class="card__label label">VENUE</p>
-            <p class="card__value">View Lounge</p>
-            <p class="card__label label">LOCATION</p>
-            <p class="card__value">San Francisco, CA</p>
-            <a href="" class="card__button button"><div>BUY TICKETS</div></a>
-          </article>
-        </div>
+        <!-- <div class="shows-section__box"> -->
+          <h2 class="shows-section__title">Shows</h2>
+          <div class="shows-section__table">
+            <article class="shows-section__header">
+              <p class="shows-section__header-label labels">DATE</p>
+              <p class="shows-section__header-label labels">VENUE</p>
+              <p class="shows-section__header-label labels">LOCATION</p>
+            </article>
+            <div class="shows-section__cards"></div>
+          </div>
+        <!-- </div> -->
       </section>
     </main>
     <footer class="footer">

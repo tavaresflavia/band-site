@@ -217,13 +217,14 @@
     @include desktop-fixed-width;
   }
 
-  &__form {
+
+  &__form-box {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     border-bottom: 1px solid $inactive-color;
 
-    @include desktop {
+    @include tablet {
       width: 40rem;
       margin: 0 auto;
     }
@@ -236,36 +237,87 @@
     }
   }
 
-  &__avatar {
-    margin: $mobile-margin $mobile-margin 0 0;
-    min-width: 2.25rem;
-    height: 2.25rem;
-    overflow: hidden;
-    border-radius: 50%;
-    @include tablet {
-      width: 3rem;
-      height: 3rem;
-    }
-  }
-
-  &__avatar-img {
+  &__avatar-box {
     height: 100%;
   }
 
-  &__inputs {
+  &__avatar-img {
+    margin: $mobile-margin $mobile-margin 0 0;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 2.25rem;
+    min-height: 2.25rem;
+    @include tablet {
+          width: 3rem;
+          height: 3rem;
+          margin-right: $tablet-desktop-margin;
+        }
+  }
+
+  &__form {
     width: 100%;
     margin-bottom: $mobile-margin;
   }
 
   &__name-input {
-    height: 2.25rem;
+    border: 2px solid $inactive-color;
+    background-color: #FAFAFA;
+    min-height: 2.25rem;
+    border-radius: 4px;
     width: 100%;
-    margin-bottom: 1rem;
+    margin: 0.25rem 0 1rem;
+    padding: 0.75rem;
+    outline: none;
+    @include tablet{
+      padding: 1rem;
+      min-height: 3rem;
+
+    }
+    &:focus{
+      border: 1px solid $primary-dark-color;
+    }
+
+    &::placeholder{
+      font-family: "Avenir";
+      color:#000000;
+      @include mobile-body-font;
+      @include tablet {
+      @include tablet-body-font;
+    }
+    }
   }
 
   &__comment-input {
-    width: 100%;
+    @extend .comment-section__name-input;
+    resize: none;
+    height: 6.75rem;
+
   }
+
+  &__input--invalid{
+    border: 1px solid #ff0000;
+  }
+
+  &__button-box{
+    @include flex-wrapped(row, flex-end);
+  }
+
+  &__button{
+    width:100%;
+    border:none;
+    @include tablet{
+      width: 9.375rem;
+    }
+  }
+}
+
+.comment-cards{
+ 
+  @include tablet {
+    width: 40rem;
+    margin: 0 auto;
+  }
+
 }
 
 .comment-card {
@@ -278,27 +330,28 @@
     margin: 0 auto;
   }
   
-
-  &__avatar-box{
-    margin-right: $mobile-margin;
-
-  }
   &__avatar {
-    min-width: 3.125rem;
-    height: 3.125rem;
-    border-radius: 50%;
     background-color: $inactive-color;
+    margin: $mobile-margin $mobile-margin 0 0;
+    border-radius: 50%;
+    object-fit: cover;
+    width: 2.25rem;
+    max-height: 2.25rem;
+    @include tablet {
+          width: 3.125rem;
+          max-height: 3.125rem;
+          margin-right: $tablet-desktop-margin;
+        }
   }
   &__content {
-    width:100%;
     margin: 0 1rem;
-
+    width:80%;
   }
+  
   &__name-box {
-    @include flex-wrapped(row, space-between);
-    
-    
+    @include flex-wrapped(row, space-between);  
   }
+
   &__name{
     @extend .about-section__quote-author;
     font-weight: 600;
@@ -316,6 +369,7 @@
   }
   &__text{
     margin: 1rem 0;
+    
     @include mobile-body-font;
 
     @include tablet {

@@ -32,7 +32,7 @@ body {
   background-color: #323232;
 }
 
-.label {
+.labels {
   font-size: 0.875rem;
   color: #AFAFAF;
   font-weight: 600;
@@ -43,7 +43,7 @@ body {
   text-decoration: none;
   color: #FFFFFF;
   font-weight: 600;
-  border-radius: 2px;
+  border-radius: 4px;
   height: 2.25rem;
   display: flex;
   flex-wrap: wrap;
@@ -466,14 +466,14 @@ body {
     margin: auto;
   }
 }
-.comment-section__form {
+.comment-section__form-box {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   border-bottom: 1px solid #E1E1E1;
 }
-@media (min-width: 1280px) {
-  .comment-section__form {
+@media (min-width: 768px) {
+  .comment-section__form-box {
     width: 40rem;
     margin: 0 auto;
   }
@@ -492,33 +492,101 @@ body {
     padding: 3rem 0 2.25rem;
   }
 }
-.comment-section__avatar {
-  margin: 1rem 1rem 0 0;
-  min-width: 2.25rem;
-  height: 2.25rem;
-  overflow: hidden;
-  border-radius: 50%;
-}
-@media (min-width: 768px) {
-  .comment-section__avatar {
-    width: 3rem;
-    height: 3rem;
-  }
-}
-.comment-section__avatar-img {
+.comment-section__avatar-box {
   height: 100%;
 }
-.comment-section__inputs {
+.comment-section__avatar-img {
+  margin: 1rem 1rem 0 0;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 2.25rem;
+  min-height: 2.25rem;
+}
+@media (min-width: 768px) {
+  .comment-section__avatar-img {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1.5rem;
+  }
+}
+.comment-section__form {
   width: 100%;
   margin-bottom: 1rem;
 }
-.comment-section__name-input {
-  height: 2.25rem;
+.comment-section__name-input, .comment-section__comment-input {
+  border: 2px solid #E1E1E1;
+  background-color: #FAFAFA;
+  min-height: 2.25rem;
+  border-radius: 4px;
   width: 100%;
-  margin-bottom: 1rem;
+  margin: 0.25rem 0 1rem;
+  padding: 0.75rem;
+  outline: none;
+}
+@media (min-width: 768px) {
+  .comment-section__name-input, .comment-section__comment-input {
+    padding: 1rem;
+    min-height: 3rem;
+  }
+}
+.comment-section__name-input:focus, .comment-section__comment-input:focus {
+  border: 1px solid #323232;
+}
+.comment-section__name-input::-moz-placeholder, .comment-section__comment-input::-moz-placeholder {
+  font-family: "Avenir";
+  color: #000000;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+}
+.comment-section__name-input::placeholder, .comment-section__comment-input::placeholder {
+  font-family: "Avenir";
+  color: #000000;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+}
+@media (min-width: 768px) {
+  .comment-section__name-input::-moz-placeholder, .comment-section__comment-input::-moz-placeholder {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 400;
+  }
+  .comment-section__name-input::placeholder, .comment-section__comment-input::placeholder {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 400;
+  }
 }
 .comment-section__comment-input {
+  resize: none;
+  height: 6.75rem;
+}
+.comment-section__input--invalid {
+  border: 1px solid #ff0000;
+}
+.comment-section__button-box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.comment-section__button {
   width: 100%;
+  border: none;
+}
+@media (min-width: 768px) {
+  .comment-section__button {
+    width: 9.375rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .comment-cards {
+    width: 40rem;
+    margin: 0 auto;
+  }
 }
 
 .comment-card {
@@ -532,18 +600,25 @@ body {
     margin: 0 auto;
   }
 }
-.comment-card__avatar-box {
-  margin-right: 1rem;
-}
 .comment-card__avatar {
-  min-width: 3.125rem;
-  height: 3.125rem;
-  border-radius: 50%;
   background-color: #E1E1E1;
+  margin: 1rem 1rem 0 0;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 2.25rem;
+  max-height: 2.25rem;
+}
+@media (min-width: 768px) {
+  .comment-card__avatar {
+    width: 3.125rem;
+    max-height: 3.125rem;
+    margin-right: 1.5rem;
+  }
 }
 .comment-card__content {
-  width: 100%;
   margin: 0 1rem;
+  width: 80%;
 }
 .comment-card__name-box {
   display: flex;

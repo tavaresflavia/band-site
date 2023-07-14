@@ -23,7 +23,7 @@ body{
   background-color: $primary-dark-color;
 }
 
-.label{
+.labels{
   font-size: 0.875rem;
   color: $secondary-light-color;
   font-weight: 600;
@@ -34,7 +34,7 @@ body{
   text-decoration: none;
   color: $primary-light-color;
   font-weight: 600;
-  border-radius: 2px;
+  border-radius: 4px;
   height: 2.25rem;
   @include flex-wrapped(row, center);
   align-items: center
