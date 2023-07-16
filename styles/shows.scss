@@ -15,7 +15,7 @@
   }
   @include desktop {
     height: 90vh;
-    display:flex;
+    display: flex;
     justify-content: center;
   }
 
@@ -54,10 +54,9 @@
 
   &__album-name {
     font-size: 0.875rem;
-    @include tablet{
+    @include tablet {
       font-size: 1.5rem;
       font-weight: 600;
-
     }
   }
 
@@ -68,7 +67,7 @@
     margin: $mobile-margin 0;
     @include tablet {
       font-size: 3.75rem;
-      margin: $tablet-desktop-margin 0  $tablet-margin-edge;
+      margin: $tablet-desktop-margin 0 $tablet-margin-edge;
     }
   }
   &__song {
@@ -83,46 +82,43 @@
 
 //SHOWS
 .shows-section {
-
-  &__box{
+  &__box {
     @include desktop-fixed-width;
     @include desktop {
       display: flex;
-      justify-content: space-between;  
+      justify-content: space-between;
     }
-  
   }
 
-  &__table{
-    margin-bottom:$mobile-margin;
-    @include tablet{
-      width:100%;
+  &__table {
+    margin-bottom: $mobile-margin;
+    @include tablet {
+      width: 100%;
       padding: 0 1.125rem $tablet-desktop-margin;
     }
-    @include desktop{
-    width:50rem;
-    margin-top: 72px;
-   
+    @include desktop {
+      margin: 4.5rem 0 0 7.5rem;
     }
-
   }
 
   &__title {
     @include mobile-section-header-font;
-    padding-left:$mobile-margin;
+    padding-left: $mobile-margin;
     @include tablet {
       @include tablet-section-header-font;
-      padding-left:$tablet-desktop-margin;
+      padding-left: $tablet-desktop-margin;
     }
   }
 
   &__header {
     display: none;
     @include tablet {
-      padding:0 1.125rem 0;
+      padding: 0 1.125rem 0;
       display: flex;
       justify-content: space-between;
-      width: calc(100% - 10rem - (100% - 42rem) / 3); // calculation to get the size of the blank space between elements (100% - 42rem)/3
+      width: calc(
+        100% - 10rem - (100% - 42rem) / 3
+      ); // calculation to get the size of the blank space between elements (100% - 42rem)/3
     }
   }
   &__header-label {
@@ -135,20 +131,20 @@
   padding: $mobile-margin $mobile-margin 0;
   cursor: pointer;
   @include tablet {
-    display:flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     padding: $tablet-desktop-margin 1.125rem 0;
   }
 
-  &:hover{
-    background-color: #FAFAFA;
+  &:hover {
+    background-color: #fafafa;
   }
 
-  &--selected{
+  &--selected {
     background-color: $inactive-color;
 
-    &:hover{
+    &:hover {
       background-color: $inactive-color;
     }
   }
@@ -161,15 +157,18 @@
   }
 
   &__value {
+    @include mobile-body-font;
     margin-bottom: $mobile-margin;
     width: 160px;
     color: $primary-dark-color;
+    @include tablet {
+      @include tablet-body-font;
+    }
 
-  &--bold{
-    font-weight: 600;
+    &--bold {
+      font-weight: 600;
+    }
   }
-  }
-
 
   &__button {
     margin-bottom: $mobile-margin;

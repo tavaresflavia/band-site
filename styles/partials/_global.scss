@@ -38,7 +38,7 @@ body{
   background-color: $primary-dark-color;
   text-decoration: none;
   color: $primary-light-color;
-  font-weight: 600;
+  font-weight: 600; 
   border-radius: 4px;
   height: 2.25rem;
   @include flex-wrapped(row, center);
