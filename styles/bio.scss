@@ -212,11 +212,11 @@
 //Join the Conversation
 
 .comment-section {
+
   &__box {
     @include section-padding;
     @include desktop-fixed-width;
   }
-
 
   &__form-box {
     display: flex;
@@ -242,7 +242,7 @@
   }
 
   &__avatar-img {
-    margin: $mobile-margin $mobile-margin 0 0;
+    margin: 1.375rem $mobile-margin 0 0;
     border-radius: 50%;
     object-fit: cover;
     width: 2.25rem;
@@ -295,7 +295,8 @@
   }
 
   &__input--invalid{
-    border: 1px solid #ff0000;
+    border: 1px solid #D22D2D;
+
   }
 
   &__button-box{
@@ -322,17 +323,20 @@
 
 .comment-card {
   display: flex;
-  margin: 1rem 0;
   border-bottom: 1px solid $inactive-color;
+  margin: $mobile-margin 0;
+  @include tablet{
+    margin: $tablet-desktop-margin 0;
+
+  }
   
   @include desktop {
     width: 40rem;
-    margin: 0 auto;
   }
   
   &__avatar {
     background-color: $inactive-color;
-    margin: $mobile-margin $mobile-margin 0 0;
+    margin-left:  $mobile-margin;
     border-radius: 50%;
     object-fit: cover;
     width: 2.25rem;
@@ -368,12 +372,13 @@
 
   }
   &__text{
-    margin: 1rem 0;
+    margin: 0.25rem 0 $mobile-margin;
     
     @include mobile-body-font;
 
     @include tablet {
       @include tablet-body-font;
+      margin: 0.25rem 0 $tablet-desktop-margin;
     }
     
    

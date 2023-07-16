@@ -31,7 +31,7 @@ cardsList = document.querySelector('.shows-section__cards');
 
 //FUNCTIONS
 
-// Display elements 
+// Display elements  takes and array of objects, call creatCards and eventlistiner to select 
 function displayShows (array){
 
 for (let i = 0; i < shows.length; i++ ){
@@ -42,12 +42,12 @@ let cardEl = createCards(array[i]);
 cardEl.addEventListener('click', (event) => {
     let selShow = document.querySelector('.card--selected')
     if (selShow === null){
-        event.target.classList.add('card--selected');
+        cardEl.classList.add('card--selected');
     }else{
         selShow.classList.remove('card--selected');
 
-        if (event.target !== selShow){
-        event.target.classList.add('card--selected');
+        if (cardEl !== selShow){
+            cardEl.classList.add('card--selected');
         }
 
 

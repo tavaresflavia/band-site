@@ -33,9 +33,17 @@ body {
 }
 
 .labels {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
   color: #AFAFAF;
   font-weight: 600;
+}
+@media (min-width: 768px) {
+  .labels {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
 }
 
 .button {
@@ -110,12 +118,15 @@ body {
 .nav__link-box:hover {
   border-bottom: 2px solid #FFFFFF;
 }
+.nav__link-box--active {
+  border-bottom: 2px solid #FFFFFF;
+}
 .nav__link {
   text-decoration: none;
   color: #E1E1E1;
   line-height: 1.25rem;
 }
-.nav__link:active {
+.nav__link--active {
   color: #FFFFFF;
   font-weight: 700;
 }
@@ -230,23 +241,18 @@ body {
 .hero {
   background: url(../assets/images/hero-shows.jpg) center center/cover;
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: flex-start;
   align-items: center;
-  height: 35vh;
+  height: 50vh;
 }
 @media (min-width: 768px) {
   .hero {
-    height: 60vh;
+    height: 70vh;
   }
 }
 @media (min-width: 1280px) {
   .hero {
     height: 90vh;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
     justify-content: center;
   }
 }
@@ -260,7 +266,6 @@ body {
   width: 100%;
   padding: 1rem;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   position: absolute;
@@ -274,7 +279,6 @@ body {
 @media (min-width: 1280px) {
   .hero__box {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -284,22 +288,30 @@ body {
 .hero__title-box {
   color: #FFFFFF;
 }
-.hero__album {
+.hero__album-name {
   font-size: 0.875rem;
+}
+@media (min-width: 768px) {
+  .hero__album-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
 }
 .hero__title {
   width: 8.5em;
   font-weight: 600;
   font-size: 1.5rem;
+  margin: 1rem 0;
 }
 @media (min-width: 768px) {
   .hero__title {
     font-size: 3.75rem;
+    margin: 1.5rem 0 2.25rem;
   }
 }
 .hero__song {
-  height: 7rem;
-  width: 18rem;
+  height: 9rem;
+  width: 100%;
 }
 @media (min-width: 768px) {
   .hero__song {
@@ -308,35 +320,31 @@ body {
   }
 }
 
-.shows-section {
-  padding: 0 1rem;
-}
-@media (min-width: 768px) {
-  .shows-section {
-    padding: 0 2.25rem;
-  }
-}
 @media (min-width: 1280px) {
-  .shows-section {
+  .shows-section__box {
     max-width: 80rem;
     margin: auto;
   }
 }
 @media (min-width: 1280px) {
-  .shows-section {
+  .shows-section__box {
     display: flex;
     justify-content: space-between;
   }
 }
+.shows-section__table {
+  margin-bottom: 1rem;
+}
 @media (min-width: 768px) {
   .shows-section__table {
     width: 100%;
+    padding: 0 1.125rem 1.5rem;
   }
 }
 @media (min-width: 1280px) {
   .shows-section__table {
-    width: 60rem;
-    margin: 4.5rem 0 2.25rem;
+    width: 50rem;
+    margin-top: 72px;
   }
 }
 .shows-section__title {
@@ -344,6 +352,7 @@ body {
   line-height: 2rem;
   font-weight: 700;
   padding: 1.5rem 0 1rem;
+  padding-left: 1rem;
 }
 @media (min-width: 768px) {
   .shows-section__title {
@@ -351,6 +360,7 @@ body {
     line-height: 2.75rem;
     font-weight: 600;
     padding: 3rem 0 2.25rem;
+    padding-left: 1.5rem;
   }
 }
 .shows-section__header {
@@ -358,12 +368,10 @@ body {
 }
 @media (min-width: 768px) {
   .shows-section__header {
+    padding: 0 1.125rem 0;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
     justify-content: space-between;
-    width: calc(100% - 10rem - (100% - 40rem) / 3);
-    margin-bottom: 1rem;
+    width: calc(100% - 10rem - (100% - 42rem) / 3);
   }
 }
 .shows-section__header-label {
@@ -372,23 +380,28 @@ body {
 
 .card {
   border-bottom: 1px solid #E1E1E1;
-  padding-top: 1rem;
+  padding: 1rem 1rem 0;
   cursor: pointer;
 }
 @media (min-width: 768px) {
   .card {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 1.5rem 1.125rem 0;
   }
+}
+.card:hover {
+  background-color: #FAFAFA;
 }
 .card--selected {
   background-color: #E1E1E1;
 }
-.card:hover {
-  background-color: #FAFAFA;
+.card--selected:hover {
+  background-color: #E1E1E1;
+}
+.card__label {
+  margin-bottom: 0.25rem;
 }
 @media (min-width: 768px) {
   .card__label {
@@ -397,7 +410,7 @@ body {
 }
 .card__value {
   margin-bottom: 1rem;
-  width: 10rem;
+  width: 160px;
   color: #323232;
 }
 .card__value--bold {
@@ -411,5 +424,6 @@ body {
 @media (min-width: 768px) {
   .card__button {
     width: 10rem;
+    margin-bottom: 1.5rem;
   }
 }/*# sourceMappingURL=shows.css.map */

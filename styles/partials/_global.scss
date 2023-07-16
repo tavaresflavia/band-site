@@ -24,9 +24,14 @@ body{
 }
 
 .labels{
-  font-size: 0.875rem;
+  @include mobile-body-font;
   color: $secondary-light-color;
   font-weight: 600;
+  @include tablet {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+}
+ 
 }
 
 .button{
@@ -84,6 +89,9 @@ body{
     &:hover {
       border-bottom: 2px solid $primary-light-color;
     }
+    &--active{
+    border-bottom: 2px solid $primary-light-color;
+    }
   }
 
   &__link {
@@ -91,7 +99,7 @@ body{
     color: $inactive-color;
     line-height: 1.25rem;
 
-    &:active {
+    &--active {
       color: $primary-light-color; 
       font-weight: 700;
     }
