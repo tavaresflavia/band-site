@@ -7,7 +7,7 @@
 
 .hero {
   background: url(../assets/images/hero-bio.jpg) center center / cover;
-  @include flex-wrapped;
+  display: flex;
   align-items: center;
 
   height: 30vh;
@@ -165,7 +165,8 @@
 
 .gallery {
   @include tablet {
-    @include flex-wrapped(column);
+    display:flex;
+    flex-direction: column;
   }
 
   &__row {
@@ -300,7 +301,8 @@
   }
 
   &__button-box{
-    @include flex-wrapped(row, flex-end);
+    display: flex;
+    justify-content: flex-end;
   }
 
   &__button{
@@ -353,7 +355,8 @@
   }
   
   &__name-box {
-    @include flex-wrapped(row, space-between);  
+    display: flex;
+    justify-content: space-between;
   }
 
   &__name{

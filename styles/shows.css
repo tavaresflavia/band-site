@@ -54,17 +54,13 @@ body {
   border-radius: 4px;
   height: 2.25rem;
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
 .nav {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
-  justify-content: flex-start;
 }
 @media (min-width: 768px) {
   .nav {
@@ -79,8 +75,6 @@ body {
 }
 .nav__logo-link {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
   justify-content: center;
   padding-top: 1rem;
 }
@@ -91,8 +85,6 @@ body {
 }
 .nav__link-bar {
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
   justify-content: space-around;
   list-style: none;
   font-size: 0.625rem;
@@ -169,8 +161,6 @@ body {
   width: 8rem;
   margin-bottom: 1rem;
   display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
   justify-content: space-between;
 }
 @media (min-width: 768px) {
@@ -182,8 +172,6 @@ body {
 @media (min-width: 768px) {
   .footer__contact-row {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
     justify-content: space-between;
   }
 }

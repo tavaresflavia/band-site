@@ -1,14 +1,5 @@
 @use './variables' as *;
 
-
-//Mixin to set display as flex and wrap content
-@mixin flex-wrapped ($flex-direction:row,$jufity-content:flex-start){
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: $flex-direction;
-    justify-content: $jufity-content;
-}
-
 //Mixins to set tablet and desktop width threshold
 @mixin tablet {
     @media (min-width: $tablet-width) {
