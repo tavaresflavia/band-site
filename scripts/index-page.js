@@ -1,36 +1,33 @@
-// Default comments
-comments = [
-  {
-    name: 'Connor Walton',
-    text: 'This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.',
-    date: '02/17/2021',
-    imgSrc: '',
-  },
-  {
-    name: 'Emilie Beach',
-    text: 'I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.',
-    date: '01/09/2021',
-    imgSrc: '',
-  },
-  {
-    name: 'Miles Acosta',
-    text: 'I can t stop listening. Every time I hear one of their songs the vocals it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can t get enough.',
-    date: '12/20/2020',
-    imgSrc: '',
-  },
-];
-
 //GLOBAL VARIABLES
+const SHOWS_ENDPOINT = "https://project-1-api.herokuapp.com/comments?api_key=";
+const API_KEY = "e0eea5f0-0f8c-4b54-9fc4-ff50843766d4";
 
-const formEl = document.querySelector('form');
-const cardList = document.querySelector('.comment-cards');
-let commentInput = document.querySelector('.comment-section__comment-input');
-let nameInput = document.querySelector('.comment-section__name-input');
-
+const formEl = document.querySelector("form");
+const cardList = document.querySelector(".comment-cards");
+const commentInput = document.querySelector(".comment-section__comment-input");
+const nameInput = document.querySelector(".comment-section__name-input");
 //FUNCTIONS
+function loadComments() {
+
+axios
+  .get(SHOWS_ENDPOINT + API_KEY)
+  .then((response) => {
+    let sortedResponse = response.data.sort((a,b) => { 
+      return b.timestamp - a.timestamp;} );
+    displayComment(sortedResponse);
+  })
+  .catch(() => {
+    failMsg = document.createElement("p");
+    failMsg.innerText =
+      "We're sorry, but there was an issue loading the data for this section.Please refresh the page to try again.";
+    failMsg.classList.add("comment-cards__error-msg");
+    cardList.appendChild(failMsg); // not showing
+  });
+
+}
 
 //func to create a comment card and display a comment
-function displayComment() {
+function displayComment(comments) {
   //for each on array object invoke func to create element  and append to cardList
   for (let i = 0; i < comments.length; i++) {
     const cardEl = createComment(comments[i]);
@@ -41,130 +38,119 @@ function displayComment() {
 //take a comment object, create a card element, append child elements and return card element
 function createComment(comment) {
   //<article class="comment-card">
-  const cardEl = document.createElement('article');
-  cardEl.classList.add('comment-card');
+  const cardEl = document.createElement("article");
+  cardEl.classList.add("comment-card");
 
   //<img class="comment-card__avatar">
-  const avatarEl = document.createElement('img');
-  if (comment.imgSrc !== ''){
-  avatarEl.setAttribute('src', comment.imgSrc);
-  }
-  avatarEl.classList.add('comment-card__avatar');
+  const avatarEl = document.createElement("div");
+  avatarEl.classList.add("comment-card__avatar");
   cardEl.appendChild(avatarEl);
 
   //<div class="comment-card__content">
-  const contentEl = document.createElement('div');
-  contentEl.classList.add('comment-card__content');
+  const contentEl = document.createElement("div");
+  contentEl.classList.add("comment-card__content");
   cardEl.appendChild(contentEl);
 
   //<div class="comment-card__name-box">
-  const nameBoxEl = document.createElement('div');
-  nameBoxEl.classList.add('comment-card__name-box');
+  const nameBoxEl = document.createElement("div");
+  nameBoxEl.classList.add("comment-card__name-box");
   contentEl.appendChild(nameBoxEl);
 
   //<h3 class="comment-card__name">Connor Walton</h3>
-  const nameEl = document.createElement('h3');
-  nameEl.classList.add('comment-card__name');
+  const nameEl = document.createElement("h3");
+  nameEl.classList.add("comment-card__name");
   nameEl.innerText = comment.name;
   nameBoxEl.appendChild(nameEl);
 
   //<p class="comment-card__date">02/17/2021</p>
-  const dateEl = document.createElement('p');
-  dateEl.classList.add('comment-card__date');
-  dateEl.innerText = comment.date;
+  const dateEl = document.createElement("p");
+  dateEl.classList.add("comment-card__date");
+  dateEl.innerText = new Date(comment.timestamp).toLocaleDateString("en-US");
   nameBoxEl.appendChild(dateEl);
 
   //<p class="comment-card__text">
-  const textEl = document.createElement('p');
-  textEl.classList.add('comment-card__text');
-  textEl.innerText = comment.text;
+  const textEl = document.createElement("p");
+  textEl.classList.add("comment-card__text");
+  textEl.innerText = comment.comment;
   contentEl.appendChild(textEl);
 
   return cardEl;
 }
 
-function AddNewComment(nameValue, dateValue, textValue, imgSrcValue) {
-  const currentCards = document.querySelectorAll('.comment-card');
+//Validate name and comment
+function validateEntries(name, comment) {
+  let isValid = true;
 
-  //Delete current comments to avaoid duplicates
-
-  for (let i = 0; i < currentCards.length; i++) {
-    cardList.removeChild(currentCards[i]);
+  if (!name.trim()) {
+    isValid = false;
+    nameInput.classList.add("comment-section__input--invalid");
   }
 
-  comments.unshift({
-    name: nameValue,
-    date: dateValue,
-    text: textValue,
-    imgSrc: imgSrcValue,
-  });
+  if (!comment.trim()) {
+    isValid = false;
+    commentInput.classList.add("comment-section__input--invalid");
+  }
 
-  displayComment();
+  if (isValid === false) {
+    return false;
+  }
+  return true;
 }
 
 //EVENTS
 
-  //Delete invalid class
-  
-  nameInput.addEventListener('focus', (event) => {
-    if (nameInput.classList.contains('comment-section__input--invalid')){
-      nameInput.classList.remove('comment-section__input--invalid');
+//Delete invalid class
 
-    }
-  })
+nameInput.addEventListener("focus", (event) => {
+  if (nameInput.classList.contains("comment-section__input--invalid")) {
+    nameInput.classList.remove("comment-section__input--invalid");
+  }
+});
 
-  commentInput.addEventListener('focus', (event) => {
-    if (commentInput.classList.contains('comment-section__input--invalid')){
-      commentInput.classList.remove('comment-section__input--invalid');
+commentInput.addEventListener("focus", (event) => {
+  if (commentInput.classList.contains("comment-section__input--invalid")) {
+    commentInput.classList.remove("comment-section__input--invalid");
+  }
+});
 
-    }
-  })
-
-  //Submit the form
-
-formEl.addEventListener('submit', (e) => {
+//Submit the form
+formEl.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const name = e.target.name.value;
-  const date = new Date().toLocaleDateString('en-US');
-  const text = e.target.comment.value;
-  const imgSrc = document
-    .querySelector('.comment-section__avatar-img')
-    .getAttribute('src');
+  // const date = new Date().toLocaleDateString('en-US');
+  const comment = e.target.comment.value;
 
-  
- 
- //Validate name and comment
- let isinvalid = false;
+  isValid = validateEntries(name, comment);
 
-  if (name.trim() === '') {
-    isinvalid = true;
-    nameInput.classList.add('comment-section__input--invalid');
-    
+  if (isValid === false) {
+    return false;
   }
-
-  if (text.trim() === '') {
-    isinvalid = true;
-    commentInput.classList.add('comment-section__input--invalid');
-  }
-
-  if (isinvalid === true){
-    return;
-  }
-
-  AddNewComment(name, date, text, imgSrc);
-
   //Clear the input fields after submitting a new comment
-  e.target.name.value = '';
-  e.target.comment.value = '';
+  e.target.name.value = "";
+  e.target.comment.value = "";
 
- 
+  const newComment = {
+    name: name,
+    comment: comment,
+  };
 
+  axios
+    .post(SHOWS_ENDPOINT + API_KEY, newComment)
+    .then(() => {
+      cardList.innerHTML = '';
+      loadComments();
+    })
+
+    .catch((error) => {
+      console.log(error);
+      // We encountered a problem while submitting your comment. Please refresh the page and try again.
+    });
 });
 
-//Invoked funcs when loading
+// //Invoked funcs when loading
+loadComments();
 
-displayComment();
+// displayComment();
 
-// test
-console.log(Date.now()); 
+// // test

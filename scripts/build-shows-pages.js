@@ -1,40 +1,31 @@
-//GLOBAL VARIABLES
+//Global variables
 
-shows = [{ 'date': 'Mon Sept 06 2021',
-'venue': 'Ronald Lane',
-'location': 'San Francisco, CA'},
-
-{'date': 'Tue Sept 21 2021' ,
-'venue': 'Pier 3 East',
-'location': 'San Francisco, CA'},
-
-{'date': 'Fri Oct 15 2021',
-'venue': 'View Lounge',
-'location': 'San Francisco, CA' },
-
-{'date': 'Sat Nov 06 2021',
-'venue': 'Hyatt Agency',
-'location': 'San Francisco, CA'},
-
-{'date': 'Fri Nov 26 2021',
-'venue': 'Moscow Center',
-'location': 'San Francisco, CA'},
-
-{'date': 'Wed Dec 15 2021', 
-'venue': 'Press Club',
-'location': 'San Francisco, CA'}
-
-]
+const SHOWS_ENDPOINT = "https://project-1-api.herokuapp.com/showdates?api_key="
+const API_KEY = "e0eea5f0-0f8c-4b54-9fc4-ff50843766d4"
+let cardsList = document.querySelector('.shows-section__cards');
 
 
-cardsList = document.querySelector('.shows-section__cards');
+axios
+    .get(SHOWS_ENDPOINT + API_KEY)
+    .then ((response) => {
+        console.log(response);
+        displayShows (response.data);
+
+    })
+    .catch(() => {
+    failMsg = document.createElement('p');
+    failMsg.innerText = "We're sorry, but there was an issue loading the data for this section.Please refresh the page to try again.";
+    failMsg.classList.add('shows-section__error-msg');
+    cardsList.appendChild(failMsg);
+}
+    )
 
 //FUNCTIONS
 
 // Display elements  takes and array of objects, call creatCards and eventlistiner to select 
 function displayShows (array){
 
-for (let i = 0; i < shows.length; i++ ){
+for (let i = 0; i < array.length; i++ ){
 
 let cardEl = createCards(array[i]);
 
@@ -74,7 +65,7 @@ function createCards(show){
     // <p class='card__value'>Mon Sept 06 2021</p>
     const dateValEl = document.createElement('p');
     dateValEl.classList.add('card__value', 'card__value--bold');
-    dateValEl.innerText = show.date;
+    dateValEl.innerText = new Date(show.date).toDateString();
     cardEl.appendChild(dateValEl);
     
     //<p class='card__label labels card__label--top'>VENUE</p>
@@ -87,7 +78,7 @@ function createCards(show){
     //<p class='card__value'>Ronald Lane</p>
     const venueValEl = document.createElement('p');
     venueValEl.classList.add('card__value');
-    venueValEl.innerText = show.venue;
+    venueValEl.innerText = show.place;
     cardEl.appendChild(venueValEl);
     
     
@@ -118,9 +109,6 @@ function createCards(show){
 
 
 
-
-
- displayShows (shows);
 
 
 

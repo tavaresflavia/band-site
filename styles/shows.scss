@@ -15,8 +15,7 @@
   }
   @include desktop {
     height: 90vh;
-    display: flex;
-    justify-content: center;
+    @include flex-justify;
   }
 
   // layer to darken the picture, grows folowing the same pattern as .hero
@@ -31,18 +30,16 @@
   &__box {
     width: 100%;
     padding: $mobile-margin;
-    display: flex;
+    @include flex-justify;
     flex-direction: column;
-    justify-content: center;
     position: absolute; // Added to change the z-index and to reposition for desktop
     z-index: 10;
     @include tablet {
       padding: $tablet-margin-edge;
     }
     @include desktop {
-      display: flex;
+      @include flex-justify(space-between);
       flex-direction: row;
-      justify-content: space-between;
       align-items: center;
       width: 80rem;
     }
@@ -85,8 +82,7 @@
   &__box {
     @include desktop-fixed-width;
     @include desktop {
-      display: flex;
-      justify-content: space-between;
+      @include flex-justify(space-between);
     }
   }
 
@@ -114,8 +110,7 @@
     display: none;
     @include tablet {
       padding: 0 1.125rem 0;
-      display: flex;
-      justify-content: space-between;
+      @include flex-justify(space-between);
       width: calc(
         100% - 10rem - (100% - 42rem) / 3
       ); // calculation to get the size of the blank space between elements (100% - 42rem)/3
@@ -124,6 +119,14 @@
   &__header-label {
     width: 10rem;
   }
+  
+  &__error-msg{
+    margin:0 $mobile-margin;
+    @include tablet{
+      margin: $tablet-desktop-margin 1.125rem;
+
+    }
+  }
 }
 
 .card {
@@ -131,8 +134,7 @@
   padding: $mobile-margin $mobile-margin 0;
   cursor: pointer;
   @include tablet {
-    display: flex;
-    justify-content: space-between;
+    @include flex-justify(space-between);
     align-items: center;
     padding: $tablet-desktop-margin 1.125rem 0;
   }

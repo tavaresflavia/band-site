@@ -13,6 +13,7 @@
   height: 30vh;
   @include tablet {
     height: 60vh;
+    max-height: 90vh;
   }
 
   @include desktop {
@@ -220,8 +221,7 @@
   }
 
   &__form-box {
-    display: flex;
-    justify-content: space-between;
+    @include flex-justify(space-between);
     align-items: flex-start;
     border-bottom: 1px solid $inactive-color;
 
@@ -301,8 +301,7 @@
   }
 
   &__button-box{
-    display: flex;
-    justify-content: flex-end;
+    @include flex-justify(flex-end);
   }
 
   &__button{
@@ -319,6 +318,11 @@
   @include tablet {
     width: 40rem;
     margin: 0 auto;
+  }
+
+  &__error-msg{
+    margin: $mobile-margin;
+
   }
 
 }
@@ -355,8 +359,7 @@
   }
   
   &__name-box {
-    display: flex;
-    justify-content: space-between;
+    @include flex-justify(space-between);
   }
 
   &__name{

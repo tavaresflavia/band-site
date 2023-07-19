@@ -235,6 +235,7 @@ body {
 @media (min-width: 768px) {
   .hero {
     height: 60vh;
+    max-height: 90vh;
   }
 }
 @media (min-width: 1280px) {
@@ -579,6 +580,9 @@ body {
     width: 40rem;
     margin: 0 auto;
   }
+}
+.comment-cards__error-msg {
+  margin: 1rem;
 }
 
 .comment-card {
