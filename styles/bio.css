@@ -230,6 +230,7 @@ body {
   background: url(../assets/images/hero-bio.jpg) center center/cover;
   display: flex;
   align-items: center;
+  position: relative;
   height: 30vh;
 }
 @media (min-width: 768px) {
@@ -245,12 +246,13 @@ body {
 }
 .hero::before {
   content: "";
-  width: 100%;
   background-color: rgba(50, 50, 50, 0.5);
+  width: 100%;
+  position: absolute;
   height: 100%;
 }
 .hero__title-box {
-  position: absolute;
+  position: relative;
   z-index: 10;
 }
 @media (min-width: 1280px) {
@@ -271,104 +273,109 @@ body {
   }
 }
 
-.about-section {
+.about {
   color: #323232;
   padding: 0 1rem;
   text-align: left;
 }
 @media (min-width: 768px) {
-  .about-section {
+  .about {
     padding: 0 2.25rem;
   }
 }
 @media (min-width: 1280px) {
-  .about-section {
+  .about {
     max-width: 80rem;
     margin: auto;
   }
 }
 @media (min-width: 768px) {
-  .about-section__content {
+  .about__content {
     margin: 0 3.75rem;
   }
 }
-.about-section__title {
+.about__title {
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 700;
   padding: 1.5rem 0 1rem;
 }
 @media (min-width: 768px) {
-  .about-section__title {
+  .about__title {
     font-size: 2.25rem;
     line-height: 2.75rem;
     font-weight: 600;
     padding: 3rem 0 2.25rem;
   }
 }
-.about-section__img {
-  max-width: 100%;
+.about__img-box {
+  width: 100%;
+  overflow: hidden;
   margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
-  .about-section__img {
+  .about__img-box {
+    max-height: 60vh;
     margin-bottom: 1.5rem;
   }
 }
-.about-section__quote-author, .comment-card__name, .about-section__text-title, .about-section__quote {
+.about__img {
+  width: 100%;
+}
+.about__quote-author, .comment-card__name, .about__text-title, .about__quote {
   font-size: 0.875rem;
   line-height: 1.375rem;
   font-weight: 700;
   color: #323232;
 }
 @media (min-width: 768px) {
-  .about-section__quote {
+  .about__quote {
     margin-bottom: 0.5rem;
     font-size: 1.5rem;
     line-height: 2rem;
   }
 }
 @media (min-width: 1280px) {
-  .about-section__quote {
+  .about__quote {
     width: 47rem;
   }
 }
-.about-section__text-title {
+.about__text-title {
   font-weight: 600;
   color: #000000;
   padding: 1.5rem 0 1rem;
 }
 @media (min-width: 768px) {
-  .about-section__text-title {
+  .about__text-title {
     padding: 3rem 0 2.25rem;
     font-weight: 700;
     font-size: 1.5rem;
     line-height: 2rem;
   }
 }
-.about-section__text {
+.about__text {
   font-size: 0.8125rem;
   line-height: 1.125rem;
   font-weight: 400;
 }
 @media (min-width: 768px) {
-  .about-section__text {
+  .about__text {
     font-size: 0.875rem;
     line-height: 1.375rem;
     font-weight: 400;
     display: flex;
   }
 }
-.about-section__paragraph-1, .about-section__paragraph-2 {
+.about__paragraph-1, .about__paragraph-2 {
   margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
-  .about-section__paragraph-1, .about-section__paragraph-2 {
+  .about__paragraph-1, .about__paragraph-2 {
     margin-bottom: 1.5rem;
   }
 }
 @media (min-width: 768px) {
-  .about-section__paragraph-2 {
+  .about__paragraph-2 {
     margin-left: 1.5rem;
   }
 }
@@ -447,50 +454,50 @@ body {
   }
 }
 
-.comment-section__box {
+.comment__box {
   padding: 0 1rem;
 }
 @media (min-width: 768px) {
-  .comment-section__box {
+  .comment__box {
     padding: 0 2.25rem;
   }
 }
 @media (min-width: 1280px) {
-  .comment-section__box {
+  .comment__box {
     max-width: 80rem;
     margin: auto;
   }
 }
-.comment-section__form-box {
+.comment__form-box {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   border-bottom: 1px solid #E1E1E1;
 }
 @media (min-width: 768px) {
-  .comment-section__form-box {
+  .comment__form-box {
     width: 40rem;
     margin: 0 auto;
   }
 }
-.comment-section__title {
+.comment__title {
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 700;
   padding: 1.5rem 0 1rem;
 }
 @media (min-width: 768px) {
-  .comment-section__title {
+  .comment__title {
     font-size: 2.25rem;
     line-height: 2.75rem;
     font-weight: 600;
     padding: 3rem 0 2.25rem;
   }
 }
-.comment-section__avatar-box {
+.comment__avatar-box {
   height: 100%;
 }
-.comment-section__avatar-img {
+.comment__avatar-img {
   margin: 1.375rem 1rem 0 0;
   border-radius: 50%;
   -o-object-fit: cover;
@@ -499,17 +506,17 @@ body {
   min-height: 2.25rem;
 }
 @media (min-width: 768px) {
-  .comment-section__avatar-img {
+  .comment__avatar-img {
     width: 3rem;
     height: 3rem;
     margin-right: 1.5rem;
   }
 }
-.comment-section__form {
+.comment__form {
   width: 100%;
   margin-bottom: 1rem;
 }
-.comment-section__name-input, .comment-section__comment-input {
+.comment__name-input, .comment__comment-input {
   border: 2px solid #E1E1E1;
   background-color: #FAFAFA;
   min-height: 2.25rem;
@@ -518,24 +525,31 @@ body {
   margin: 0.25rem 0 1rem;
   padding: 0.75rem;
   outline: none;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+  font-family: "Avenir";
 }
 @media (min-width: 768px) {
-  .comment-section__name-input, .comment-section__comment-input {
+  .comment__name-input, .comment__comment-input {
     padding: 1rem;
     min-height: 3rem;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 400;
   }
 }
-.comment-section__name-input:focus, .comment-section__comment-input:focus {
+.comment__name-input:focus, .comment__comment-input:focus {
   border: 1px solid #323232;
 }
-.comment-section__name-input::-moz-placeholder, .comment-section__comment-input::-moz-placeholder {
+.comment__name-input::-moz-placeholder, .comment__comment-input::-moz-placeholder {
   font-family: "Avenir";
   color: #000000;
   font-size: 0.8125rem;
   line-height: 1.125rem;
   font-weight: 400;
 }
-.comment-section__name-input::placeholder, .comment-section__comment-input::placeholder {
+.comment__name-input::placeholder, .comment__comment-input::placeholder {
   font-family: "Avenir";
   color: #000000;
   font-size: 0.8125rem;
@@ -543,46 +557,61 @@ body {
   font-weight: 400;
 }
 @media (min-width: 768px) {
-  .comment-section__name-input::-moz-placeholder, .comment-section__comment-input::-moz-placeholder {
+  .comment__name-input::-moz-placeholder, .comment__comment-input::-moz-placeholder {
     font-size: 0.875rem;
     line-height: 1.375rem;
     font-weight: 400;
   }
-  .comment-section__name-input::placeholder, .comment-section__comment-input::placeholder {
+  .comment__name-input::placeholder, .comment__comment-input::placeholder {
     font-size: 0.875rem;
     line-height: 1.375rem;
     font-weight: 400;
   }
 }
-.comment-section__comment-input {
+.comment__comment-input {
   resize: none;
   height: 6.75rem;
+  font-family: "Avenir";
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
 }
-.comment-section__input--invalid {
+@media (min-width: 768px) {
+  .comment__comment-input {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 400;
+  }
+}
+.comment__input--invalid {
   border: 1px solid #D22D2D;
 }
-.comment-section__button-box {
+.comment__button-box {
   display: flex;
   justify-content: flex-end;
 }
-.comment-section__button {
+.comment__button {
   width: 100%;
   border: none;
 }
 @media (min-width: 768px) {
-  .comment-section__button {
+  .comment__button {
     width: 9.375rem;
   }
 }
-
 @media (min-width: 768px) {
-  .comment-cards {
+  .comment__cards {
     width: 40rem;
     margin: 0 auto;
   }
 }
-.comment-cards__error-msg {
+.comment__error-msg {
   margin: 1rem;
+}
+@media (min-width: 768px) {
+  .comment__error-msg {
+    margin: 1.5rem;
+  }
 }
 
 .comment-card {

@@ -14,7 +14,7 @@
           <img
             class="nav__logo"
             src="./assets/logos/Logo-bandsite.svg"
-            alt="" />
+            alt="logo" />
         </a>
         <ul class="nav__link-bar">
           <li class="nav__link-box nav__link-box--active">
@@ -36,23 +36,25 @@
     </section>
 
     <main class="main">
-      <section class="about-section">
-        <h2 class="about-section__title">About the Musicians</h2>
-        <section class="about-section__content">
+      <section class="about">
+        <h2 class="about__title">About the Musicians</h2>
+        <section class="about__content">
+          <div class="about__img-box">
           <img
-            class="about-section__img"
+            class="about__img"
             src="./assets/images/band.jpg"
             alt="band picture" />
-          <p class="about-section__quote">
+          </div>
+          <p class="about__quote">
             “We push each other to be the best. It’s not uncommon for one of us
             to say ‘this needs to be better, back to the drawing board’”
           </p>
-          <p class="about-section__quote-author">
+          <p class="about__quote-author">
             - Bryan Teddy, lead vocalist of The Bees Knees
           </p>
-          <h3 class="about-section__text-title">The Bees Knees</h3>
-          <article class="about-section__text">
-            <p class="about-section__paragraph-1">
+          <h3 class="about__text-title">The Bees Knees</h3>
+          <article class="about__text">
+            <p class="about__paragraph-1">
               The Bees Knees is a pop rock band originating from San Francisco,
               California. The band consists of lead vocalist Bryan Teddy,
               guitarist Mack Tolkens, guitarist Andrew Green, bassist Kent
@@ -63,7 +65,7 @@
               confident the band could succeed even further, pushing them to
               sign with Magenta Records.
             </p>
-            <p class="about-section__paragraph-2">
+            <p class="about__paragraph-2">
               From there, the band has soared, gaining international recognition
               and ranking in the top 10 on the Poster Charts. New fans
               immediately fell in love with the band’s original and organic
@@ -86,19 +88,19 @@
               <div class="gallery__img-box">
                 <img
                   src="./assets/images/Photo-gallery-1.jpg"
-                  alt=""
+                  alt="concert-picture-1"
                   class="gallery__img" />
               </div>
               <div class="gallery__img-box gallery__img-box--middle">
                 <img
                   src="./assets/images/Photo-gallery-2.jpg"
-                  alt=""
+                  alt="concert-picture-2"
                   class="gallery__img" />
               </div>
               <div class="gallery__img-box">
                 <img
                   src="./assets/images/Photo-gallery-3.jpg"
-                  alt=""
+                  alt="concert-picture-3"
                   class="gallery__img" />
               </div>
             </div>
@@ -106,13 +108,13 @@
               <div class="gallery__img-box">
                 <img
                   src="./assets/images/Photo-gallery-4.jpg"
-                  alt=""
+                  alt="concert-picture-4"
                   class="gallery__img" />
               </div>
               <div class="gallery__img-box gallery__img-box--middle">
                 <img
                   src="./assets/images/Photo-gallery-5.jpg"
-                  alt=""
+                  alt="concert-picture-5"
                   class="gallery__img" />
               </div>
               <div class="gallery__img-box">
@@ -126,19 +128,19 @@
               <div class="gallery__img-box">
                 <img
                   src="./assets/images/Photo-gallery-7.jpg"
-                  alt=""
+                  alt="concert-picture-6"
                   class="gallery__img" />
               </div>
               <div class="gallery__img-box gallery__img-box--middle">
                 <img
                   src="./assets/images/Photo-gallery-8.jpg"
-                  alt=""
+                  alt="concert-picture-7"
                   class="gallery__img" />
               </div>
               <div class="gallery__img-box">
                 <img
                   src="./assets/images/Photo-gallery-9.jpg"
-                  alt=""
+                  alt="concert-picture-8"
                   class="gallery__img" />
               </div>
             </div>
@@ -146,41 +148,40 @@
         </div>
       </section>
 
-      <section class="comment-section">
-        <div class="comment-section__box">
-          <h2 class="comment-section__title">Join the Conversation</h2>
-          <div class="comment-section__form-box">
-            <div class="comment-section__avatar-box">
+      <section class="comment">
+        <div class="comment__box">
+          <h2 class="comment__title">Join the Conversation</h2>
+          <div class="comment__form-box">
+            <div class="comment__avatar-box">
               <img
-                class="comment-section__avatar-img"
+                class="comment__avatar-img"
                 src="./assets/images/Mohan-muruge.jpg"
-                alt="" />
+                alt="avatar" />
             </div>
-            <form class="comment-section__form">
-              <label class="comment-section__label labels" for="name">
+            <form class="comment__form" id = "comment__form">
+              <label class="comment__label labels" for="name">
                 NAME
               </label>
               <input
                 type="text"
-                class="comment-section__name-input"
-                id="name"
+                class="comment__name-input"
+                name="name"
                 placeholder="Enter your name" />
-              <label class="comment-section__label labels" for="comment">
+              <label class="comment__label labels" for="comment">
                 COMMENT
               </label>
               <textarea
                 name="comment"
-                id="comment"
-                class="comment-section__comment-input"
+                class="comment__comment-input"
                 placeholder="Add new comment"></textarea>
-              <div class="comment-section__button-box">
-                <button class="comment-section__button button" type="submit">
+              <div class="comment__button-box">
+                <button form = "comment__form" class="comment__button button" type="submit">
                   COMMENT
                 </button>
               </div>
             </form>
           </div>
-          <section class="comment-cards"></section>
+          <section class="comment__cards"></section>
         </div>
       </section>
     </main>

@@ -9,6 +9,7 @@
   background: url(../assets/images/hero-bio.jpg) center center / cover;
   display: flex;
   align-items: center;
+  position:relative;
 
   height: 30vh;
   @include tablet {
@@ -24,13 +25,15 @@
 
   &::before {
     content: "";
-    width: 100%;
+    
     background-color: rgba(50, 50, 50, 0.5);
+    width: 100%;
+    position: absolute; 
     height: 100%;
   }
 
   &__title-box {
-    position: absolute; // Added to change the z-index and to reposition for desktop
+    position: relative; // Added to change the z-index and to reposition for desktop
     z-index: 10;
     @include desktop {
       left: calc(
@@ -53,11 +56,12 @@
 
 //ABOUT SECTION
 
-.about-section {
+.about {
   color: $primary-dark-color;
   @include section-padding; // Mixin to change the lateral padding of main sections
   text-align: left;
   @include desktop-fixed-width; // Mixin to change the keep content width fixed and centralized (margin:auto)
+ 
 
   &__content {
     @include tablet {
@@ -71,14 +75,19 @@
       @include tablet-section-header-font;
     }
   }
-
-  // Mixins sets padding, font size, weight and line-hieght
-  &__img {
-    max-width: 100%;
+  
+  &__img-box{
+    width: 100%;
+    overflow: hidden;
     margin-bottom: $mobile-margin;
-    @include tablet {
-      margin-bottom: $tablet-desktop-margin;
-    }
+  @include tablet {
+    max-height: 60vh;
+    margin-bottom: $tablet-desktop-margin;
+  }
+  }
+
+  &__img {
+    width: 100%;
   }
 
   // __quote has the same font size as ___quote-author in mobile and same a __text-title after tablet width
@@ -91,7 +100,7 @@
   }
 
   &__quote {
-    @extend .about-section__quote-author;
+    @extend .about__quote-author;
 
     @include tablet {
       margin-bottom: 0.5rem;
@@ -106,7 +115,7 @@
   }
 
   &__text-title {
-    @extend .about-section__quote-author;
+    @extend .about__quote-author;
     font-weight: 600;
     color: #000000;
     padding: 1.5rem 0 1rem;
@@ -137,7 +146,7 @@
   }
 
   &__paragraph-2 {
-    @extend .about-section__paragraph-1;
+    @extend .about__paragraph-1;
     @include tablet {
       margin-left: $tablet-desktop-margin;
     }
@@ -213,7 +222,7 @@
 
 //Join the Conversation
 
-.comment-section {
+.comment {
 
   &__box {
     @include section-padding;
@@ -269,9 +278,12 @@
     margin: 0.25rem 0 1rem;
     padding: 0.75rem;
     outline: none;
+    @include mobile-body-font;
+    font-family: "Avenir";
     @include tablet{
       padding: 1rem;
       min-height: 3rem;
+      @include tablet-body-font;
 
     }
     &:focus{
@@ -289,9 +301,14 @@
   }
 
   &__comment-input {
-    @extend .comment-section__name-input;
+    @extend .comment__name-input;
     resize: none;
     height: 6.75rem;
+    font-family: "Avenir";
+    @include mobile-body-font;
+    @include tablet{
+      @include tablet-body-font;
+    }
 
   }
 
@@ -311,21 +328,24 @@
       width: 9.375rem;
     }
   }
-}
 
-.comment-cards{
- 
-  @include tablet {
-    width: 40rem;
-    margin: 0 auto;
+  &__cards{
+    @include tablet {
+      width: 40rem;
+      margin: 0 auto;
+    }
   }
 
   &__error-msg{
     margin: $mobile-margin;
-
+    @include tablet{
+      margin: $tablet-desktop-margin;
+    }
+  
   }
 
 }
+
 
 .comment-card {
   display: flex;
@@ -363,7 +383,7 @@
   }
 
   &__name{
-    @extend .about-section__quote-author;
+    @extend .about__quote-author;
     font-weight: 600;
   }
   

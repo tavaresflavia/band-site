@@ -230,6 +230,7 @@ body {
   background: url(../assets/images/hero-shows.jpg) center center/cover;
   display: flex;
   align-items: center;
+  position: relative;
   height: 50vh;
 }
 @media (min-width: 768px) {
@@ -249,6 +250,7 @@ body {
   width: 100%;
   background-color: rgba(50, 50, 50, 0.5);
   height: 100%;
+  position: absolute;
 }
 .hero__box {
   width: 100%;
@@ -256,7 +258,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  position: absolute;
+  position: relative;
   z-index: 10;
 }
 @media (min-width: 768px) {
@@ -309,32 +311,32 @@ body {
 }
 
 @media (min-width: 1280px) {
-  .shows-section__box {
+  .shows__box {
     max-width: 80rem;
     margin: auto;
   }
 }
 @media (min-width: 1280px) {
-  .shows-section__box {
+  .shows__box {
     display: flex;
     justify-content: space-between;
   }
 }
-.shows-section__table {
+.shows__table {
   margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
-  .shows-section__table {
+  .shows__table {
     width: 100%;
     padding: 0 1.125rem 1.5rem;
   }
 }
 @media (min-width: 1280px) {
-  .shows-section__table {
+  .shows__table {
     margin: 4.5rem 0 0 7.5rem;
   }
 }
-.shows-section__title {
+.shows__title {
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 700;
@@ -342,7 +344,7 @@ body {
   padding-left: 1rem;
 }
 @media (min-width: 768px) {
-  .shows-section__title {
+  .shows__title {
     font-size: 2.25rem;
     line-height: 2.75rem;
     font-weight: 600;
@@ -350,25 +352,25 @@ body {
     padding-left: 1.5rem;
   }
 }
-.shows-section__header {
+.shows__header {
   display: none;
 }
 @media (min-width: 768px) {
-  .shows-section__header {
+  .shows__header {
     padding: 0 1.125rem 0;
     display: flex;
     justify-content: space-between;
     width: calc(100% - 10rem - (100% - 42rem) / 3);
   }
 }
-.shows-section__header-label {
+.shows__header-label {
   width: 10rem;
 }
-.shows-section__error-msg {
+.shows__error-msg {
   margin: 0 1rem;
 }
 @media (min-width: 768px) {
-  .shows-section__error-msg {
+  .shows__error-msg {
     margin: 1.5rem 1.125rem;
   }
 }

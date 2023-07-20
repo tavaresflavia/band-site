@@ -9,13 +9,14 @@
   background: url(../assets/images/hero-shows.jpg) center center / cover;
   display: flex;
   align-items: center;
+  position:relative;
   height: 50vh;
   @include tablet {
     height: 70vh;
   }
   @include desktop {
     height: 90vh;
-    @include flex-justify;
+    @include flex-justify(center);
   }
 
   // layer to darken the picture, grows folowing the same pattern as .hero
@@ -25,14 +26,15 @@
     width: 100%;
     background-color: rgba(50, 50, 50, 0.5);
     height: 100%;
+    position: absolute;
   }
 
   &__box {
     width: 100%;
     padding: $mobile-margin;
-    @include flex-justify;
+    @include flex-justify(center);
     flex-direction: column;
-    position: absolute; // Added to change the z-index and to reposition for desktop
+    position: relative; // Added to change the z-index and to reposition for desktop
     z-index: 10;
     @include tablet {
       padding: $tablet-margin-edge;
@@ -78,7 +80,7 @@
 }
 
 //SHOWS
-.shows-section {
+.shows {
   &__box {
     @include desktop-fixed-width;
     @include desktop {

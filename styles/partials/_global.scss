@@ -41,7 +41,7 @@ body{
   font-weight: 600; 
   border-radius: 4px;
   height: 2.25rem;
-  @include flex-justify;
+  @include flex-justify(center);
   align-items: center;
 }
 
@@ -56,7 +56,7 @@ body{
   @include desktop-fixed-width; // Added to keep fixed with on the center for desktop
 
   &__logo-link {
-    @include flex-justify;
+    @include flex-justify(center);
     padding-top: $mobile-margin;
    
 
