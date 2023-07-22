@@ -23,7 +23,7 @@ function displayShows(array) {
   for (let i = 0; i < array.length; i++) {
     let cardEl = createCards(array[i], cardsList);
 
-    cardEl.addEventListener('click', (event) => {
+    cardEl.addEventListener('click', () => {
       let selShow = document.querySelector('.card--selected');
       if (selShow === null) {
         cardEl.classList.add('card--selected');

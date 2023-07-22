@@ -398,15 +398,45 @@
 
   }
   &__text{
-    margin: 0.25rem 0 $mobile-margin;
+    margin-top: 0.25rem;
     
     @include mobile-body-font;
 
     @include tablet {
       @include tablet-body-font;
-      margin: 0.25rem 0 $tablet-desktop-margin;
+      margin-top: 0.25rem;
     }
     
-   
+  }
+
+  &__likesBox{
+    height: 1.5625rem;
+    @include flex-justify(flex-end);
+    align-items:last baseline;
+    margin-bottom: $mobile-margin;    
+    @include tablet{
+      margin-bottom: $tablet-desktop-margin;
+    }
+  }
+
+  &__like-box{
+    height: 1.5625rem;
+    width: 1.5625rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  &__like-icon{
+    cursor: pointer;
+    object-fit: contain;
+    width:100%;
+  }
+
+  &__likes{
+    @include mobile-body-font;      
+    @include tablet{
+      @include tablet-body-font;
+    }
   }
 }

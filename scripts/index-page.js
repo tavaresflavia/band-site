@@ -1,6 +1,6 @@
 //GLOBAL VARIABLES
-const SHOWS_ENDPOINT = "https://project-1-api.herokuapp.com/comments?api_key=";
-const API_KEY = "e0eea5f0-0f8c-4b54-9fc4-ff50843766d4";
+const COMMENTS_ENDPOINT = "https://project-1-api.herokuapp.com/comments";
+const API_KEY = "?api_key=e0eea5f0-0f8c-4b54-9fc4-ff50843766d4";  
 
 const formEl = document.querySelector("form");
 const cardList = document.querySelector(".comment__cards");
@@ -9,21 +9,20 @@ const nameInput = document.querySelector(".comment__name-input");
 
 //FUNCTIONS
 function loadComments() {
-
-axios
-  .get(SHOWS_ENDPOINT + API_KEY)
-  .then((response) => {
-    let sortedResponse = response.data.sort((a,b) => { 
-      return b.timestamp - a.timestamp;} );
-    displayComment(sortedResponse);
-  })
-  .catch(() => {
-    failMsg = document.createElement("p");
-    failMsg.innerText =
-      "We're sorry, but there was an issue loading the data for this section.Please refresh the page to try again.";
-    failMsg.classList.add("comment__error-msg");
-    cardList.appendChild(failMsg); // not showing
-  });
+  axios
+    .get(COMMENTS_ENDPOINT + API_KEY)
+    .then((response) => {
+      response.data.sort((a,b) => { 
+        return b.timestamp - a.timestamp;} );
+      displayComment(response.data);
+    })
+    .catch(() => {
+      failMsg = document.createElement("p");
+      failMsg.innerText =
+        "We're sorry, but there was an issue loading the data for this section.Please refresh the page to try again.";
+      failMsg.classList.add("comment__error-msg");
+      cardList.appendChild(failMsg); // not showing
+    });
 
 }
 
@@ -31,8 +30,25 @@ axios
 function displayComment(comments) {
   //for each on array object invoke func to create element  and append to cardList
   for (let i = 0; i < comments.length; i++) {
-    const cardEl = createComment(comments[i]);
+    const cardElements = createComment(comments[i]);
+    const cardEl = cardElements[0];
+    const likeBoxEl = cardElements[1];
     cardList.appendChild(cardEl);
+
+    //Heart button will add innerText to the likesCount to avoid flickering/delay 
+    likeBoxEl.addEventListener("click", ()=>{
+      axios.put(`${COMMENTS_ENDPOINT}/${comments[i].id}/like${API_KEY}`)
+      .then( () => {
+        let likesCountEl = cardElements[2];
+        likesCountEl.innerText = Number(likesCountEl.innerText) + 1;
+
+      })
+      .catch( (error) => {
+        console.log(error);}
+      )
+
+    });
+
   }
 }
 
@@ -69,7 +85,27 @@ function createComment(comment) {
   textEl.innerText = comment.comment;
   contentEl.appendChild(textEl);
 
-  return cardEl;
+  const likesBoxEl = document.createElement("div");
+  likesBoxEl.classList.add("comment-card__likesBox");
+  contentEl.appendChild(likesBoxEl);
+
+  const likeBoxEl = document.createElement("div");
+  likeBoxEl.classList.add("comment-card__like-box");
+  likesBoxEl.appendChild(likeBoxEl);
+
+  const likeEl = document.createElement("img");
+  likeEl.classList.add("comment-card__like-icon");
+  likeEl.setAttribute("src", "./assets/icons/icon-like.svg")
+  likeEl.innerText = "favorite"  
+  likeBoxEl.appendChild(likeEl);
+
+  const likesCountEl = document.createElement("p");
+  likesCountEl.classList.add("comment-card__likes");
+  likesCountEl.innerText = comment.likes;
+  likesBoxEl.appendChild(likesCountEl);
+
+  // return cardEl and likeBoxEl to be used in displayComment function
+  return [cardEl, likeBoxEl, likesCountEl];
 }
 
 //Validate name and comment
@@ -92,13 +128,13 @@ function validateEntries(name, comment) {
 
 //Delete invalid class
 
-nameInput.addEventListener("focus", (event) => {
+nameInput.addEventListener("focus", () => {
   if (nameInput.classList.contains("comment__input--invalid")) {
     nameInput.classList.remove("comment__input--invalid");
   }
 });
 
-commentInput.addEventListener("focus", (event) => {
+commentInput.addEventListener("focus", () => {
   if (commentInput.classList.contains("comment__input--invalid")) {
     commentInput.classList.remove("comment__input--invalid");
   }
@@ -128,7 +164,7 @@ formEl.addEventListener("submit", (e) => {
   };
 
   axios
-    .post(SHOWS_ENDPOINT + API_KEY, newComment)
+    .post(COMMENTS_ENDPOINT + API_KEY, newComment, "Content-Type: application/json")
     .then(() => {
       cardList.innerHTML = '';
       loadComments();
