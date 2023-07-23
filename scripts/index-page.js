@@ -7,6 +7,7 @@ const cardList = document.querySelector(".comment__cards");
 const commentInput = document.querySelector(".comment__comment-input");
 const nameInput = document.querySelector(".comment__name-input");
 
+
 //FUNCTIONS
 function loadComments() {
   axios
@@ -26,17 +27,18 @@ function loadComments() {
 
 }
 
-//func to create a comment card and display a comment
+//func to create a comment card, display a comment & create callbacks for delete and like
 function displayComment(comments) {
   //for each on array object invoke func to create element  and append to cardList
   for (let i = 0; i < comments.length; i++) {
     const cardElements = createComment(comments[i]);
     const cardEl = cardElements[0];
-    const likeBoxEl = cardElements[1];
+    const likeEl = cardElements[1];
+    const deleteEl = cardElements[3];
     cardList.appendChild(cardEl);
 
-    //Heart button will add innerText to the likesCount to avoid flickering/delay 
-    likeBoxEl.addEventListener("click", ()=>{
+    //like button will add innerText to the likesCount to avoid flickering/delay 
+    likeEl.addEventListener("click", ()=>{
       axios.put(`${COMMENTS_ENDPOINT}/${comments[i].id}/like${API_KEY}`)
       .then( () => {
         let likesCountEl = cardElements[2];
@@ -49,10 +51,24 @@ function displayComment(comments) {
 
     });
 
+    //delete button will delete from HTML to the likesCount to avoid flickering/delay 
+
+    deleteEl.addEventListener("click", ()=>{
+      axios.delete(`${COMMENTS_ENDPOINT}/${comments[i].id}${API_KEY}`)
+      .then( () => {
+        cardEl.remove();
+
+      })
+      .catch( (error) => {
+        console.log(error);}
+      )
+
+    });
+
   }
 }
 
-//take a comment object, create a card element, append child elements and return card element
+//take a comment    object, create a card element, append child elements and return card element
 function createComment(comment) {
  
   const cardEl = document.createElement("article");
@@ -85,13 +101,19 @@ function createComment(comment) {
   textEl.innerText = comment.comment;
   contentEl.appendChild(textEl);
 
-  const likesBoxEl = document.createElement("div");
-  likesBoxEl.classList.add("comment-card__likesBox");
-  contentEl.appendChild(likesBoxEl);
+  const iconsBoxEl = document.createElement("div");
+  iconsBoxEl.classList.add("comment-card__icons-box");
+  contentEl.appendChild(iconsBoxEl);
+
+  const deleteEl = document.createElement("img");
+  deleteEl.classList.add("comment-card__delete-icon");
+  deleteEl.setAttribute("src", "./assets/icons/icon-delete.svg")
+  iconsBoxEl.appendChild(deleteEl);
+
 
   const likeBoxEl = document.createElement("div");
   likeBoxEl.classList.add("comment-card__like-box");
-  likesBoxEl.appendChild(likeBoxEl);
+  iconsBoxEl.appendChild(likeBoxEl);
 
   const likeEl = document.createElement("img");
   likeEl.classList.add("comment-card__like-icon");
@@ -100,12 +122,12 @@ function createComment(comment) {
   likeBoxEl.appendChild(likeEl);
 
   const likesCountEl = document.createElement("p");
-  likesCountEl.classList.add("comment-card__likes");
+  likesCountEl.classList.add("comment-card__like-count");
   likesCountEl.innerText = comment.likes;
-  likesBoxEl.appendChild(likesCountEl);
+  likeBoxEl.appendChild(likesCountEl);
 
-  // return cardEl and likeBoxEl to be used in displayComment function
-  return [cardEl, likeBoxEl, likesCountEl];
+  // return cardEl and likeEl to be used in displayComment function
+  return [cardEl, likeEl, likesCountEl, deleteEl ];
 }
 
 //Validate name and comment
@@ -126,29 +148,15 @@ function validateEntries(name, comment) {
 
 //EVENTS
 
-//Delete invalid class
-
-nameInput.addEventListener("focus", () => {
-  if (nameInput.classList.contains("comment__input--invalid")) {
-    nameInput.classList.remove("comment__input--invalid");
-  }
-});
-
-commentInput.addEventListener("focus", () => {
-  if (commentInput.classList.contains("comment__input--invalid")) {
-    commentInput.classList.remove("comment__input--invalid");
-  }
-});
-
-//Submit the form
+//Submit  comment (form)
 formEl.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  const name = e.target.name.value;
+  const nameValue = e.target.name.value;
   // const date = new Date().toLocaleDateString('en-US');
-  const comment = e.target.comment.value;
+  const commentValue = e.target.comment.value;
 
-  isValid = validateEntries(name, comment);
+  isValid = validateEntries(nameValue, commentValue);
   
   if (!isValid) {
     return false;
@@ -159,8 +167,8 @@ formEl.addEventListener("submit", (e) => {
   e.target.comment.value = "";
 
   const newComment = {
-    name: name,
-    comment: comment,
+    name: nameValue,
+    comment: commentValue,
   };
 
   axios
@@ -177,6 +185,20 @@ formEl.addEventListener("submit", (e) => {
       formEl.appendChild(failMsg);
   
     });
+});
+
+//Delete invalid class
+
+nameInput.addEventListener("focus", () => {
+  if (nameInput.classList.contains("comment__input--invalid")) {
+    nameInput.classList.remove("comment__input--invalid");
+  }
+});
+
+commentInput.addEventListener("focus", () => {
+  if (commentInput.classList.contains("comment__input--invalid")) {
+    commentInput.classList.remove("comment__input--invalid");
+  }
 });
 
 // //Invoked funcs when loading
